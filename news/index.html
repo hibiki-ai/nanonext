@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nanonext</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.0.9010</span>
       </span>
     </div>
 
@@ -53,6 +53,110 @@
       <small>Source: <a href="https://github.com/shikokuchuo/nanonext/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.6.0.9010" id="nanonext-0609010-development">nanonext 0.6.0.9010 (development)<a class="anchor" aria-label="anchor" href="#nanonext-0609010-development"></a></h2>
+<div class="section level5">
+<h5 id="updates-0-6-0-9010">Updates<a class="anchor" aria-label="anchor" href="#updates-0-6-0-9010"></a></h5>
+<ul><li>
+<code><a href="../reference/send.html">send()</a></code> no longer has a ‘…’ argument. This has had no effect since 0.6.0, but will now error if additional arguments are provided (please check and remove previous uses of the argument ‘echo’).</li>
+<li>
+<code><a href="../reference/device.html">device()</a></code> no longer prompts for confirmation in interactive environments - as device creation is only successful when binding 2 raw mode sockets, there is little scope for accidental use.</li>
+<li>Fixes bug introduced in 0.6.0 where Aios returning ‘errorValues’ are not cached with the class, returning only integer values when accessed subsequent to the first time.</li>
+<li>Internal performance enhancements.</li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.6.0" id="nanonext-060">nanonext 0.6.0<small>2022-10-09</small><a class="anchor" aria-label="anchor" href="#nanonext-060"></a></h2>
+<p><em>The nanonext 0.6 series incorporates significant advances in performance and stability over previous releases</em></p>
+<div class="section level5">
+<h5 id="new-features-0-6-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-6-0"></a></h5>
+<ul><li>Implements <code><a href="../reference/base64enc.html">base64enc()</a></code> and <code><a href="../reference/base64enc.html">base64dec()</a></code> base64 encoding and decoding using the ‘Mbed TLS’ library.</li>
+<li>
+<code><a href="../reference/sha256.html">sha224()</a></code>, <code><a href="../reference/sha256.html">sha256()</a></code>, <code><a href="../reference/sha256.html">sha384()</a></code> and <code><a href="../reference/sha256.html">sha512()</a></code> functions gain an argument ‘convert’ to control whether to return a raw vector or character string.</li>
+<li>
+<code><a href="../reference/ncurl.html">ncurl()</a></code> gains the argument ‘follow’ (default FALSE) to control whether redirects are automatically followed.</li>
+</ul></div>
+<div class="section level5">
+<h5 id="updates-0-6-0">Updates<a class="anchor" aria-label="anchor" href="#updates-0-6-0"></a></h5>
+<p><em>Please review the following potentially breaking changes, and only update when ready:</em></p>
+<ul><li>
+<code><a href="../reference/send.html">send()</a></code> now returns an integer exit code in all cases. The ‘echo’ argument has been replaced by ‘…’, and specifying ‘echo’ no longer has any effect.</li>
+<li>
+<code><a href="../reference/recv.html">recv()</a></code>, <code><a href="../reference/recv_aio.html">recv_aio()</a></code> and <code><a href="../reference/request.html">request()</a></code> now default to ‘keep.raw’ = FALSE to return only the sent object.</li>
+<li>
+<code><a href="../reference/ncurl.html">ncurl()</a></code> argument ‘request’ renamed to ‘response’ for specifying response headers to return (to avoid confusion); new argument ‘follow’ (placed between ‘convert’ and ‘method’) controls whether redirects are followed, and there is no longer a user prompt in interactive environments.</li>
+<li>
+<code><a href="../reference/sha256.html">sha224()</a></code>, <code><a href="../reference/sha256.html">sha256()</a></code>, <code><a href="../reference/sha256.html">sha384()</a></code> and <code><a href="../reference/sha256.html">sha512()</a></code> functions no longer return ‘nanoHash’ objects, but a raw vector or character string depending on the new argument ‘convert’.</li>
+</ul><p><em>Other changes:</em></p>
+<ul><li>
+<code><a href="../reference/socket.html">socket()</a></code> and <code><a href="../reference/nano.html">nano()</a></code> now accept non-missing NULL ‘listen’ and ‘dial’ arguments, allowing easier programmatic use.</li>
+<li>Functions <code><a href="../reference/send.html">send()</a></code>, <code><a href="../reference/recv.html">recv()</a></code>, <code><a href="../reference/send_aio.html">send_aio()</a></code>, <code><a href="../reference/recv_aio.html">recv_aio()</a></code>, <code><a href="../reference/setopt.html">setopt()</a></code>, <code><a href="../reference/subscribe.html">subscribe()</a></code>, <code><a href="../reference/unsubscribe.html">unsubscribe()</a></code> and <code><a href="../reference/survey_time.html">survey_time()</a></code> are no longer S3 generics for enhanced performance.</li>
+<li>
+<code><a href="../reference/messenger.html">messenger()</a></code> uses longer SHA-512 hash for authentication; fixes errors creating a connnection not being shown.</li>
+<li>The source code of ‘libnng’ v1.6.0 pre-release (722bf46) and ‘libmbedtls’ v3.2.1 now comes bundled rather than downloaded - this is much more efficient as unused portions have been stripped out.</li>
+<li>Detects and uses system installations of ‘libnng’ &gt;= 1.6.0 pre-release 722bf46 and ‘libmbedtls’ &gt;= 2 where available, only compiling from source when required.</li>
+<li>R &gt;= 4.2 on Windows now performs source compilation of the bundled ‘libnng’ and ‘libmbedtls’ using the rtools42 toolchain. Installation falls back to pre-compiled libraries for older R releases.</li>
+<li>Supported R version amended to &gt;= 2.5, when the current <code><a href="https://rdrr.io/r/base/environment.html" class="external-link">new.env()</a></code> interface was implemented.</li>
+<li>Internal performance enhancements.</li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.5.5" id="nanonext-055">nanonext 0.5.5<small>2022-09-04</small><a class="anchor" aria-label="anchor" href="#nanonext-055"></a></h2>
+<div class="section level5">
+<h5 id="updates-0-5-5">Updates<a class="anchor" aria-label="anchor" href="#updates-0-5-5"></a></h5>
+<ul><li>Installation succeeds under Linux where library path uses ‘lib64’ instead of ‘lib’, and fails gracefully if ‘cmake’ is not found.</li></ul></div>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.5.4" id="nanonext-054">nanonext 0.5.4<small>2022-09-02</small><a class="anchor" aria-label="anchor" href="#nanonext-054"></a></h2>
+<div class="section level5">
+<h5 id="new-features-0-5-4">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-5-4"></a></h5>
+<ul><li>Implements <code><a href="../reference/sha256.html">sha224()</a></code>, <code><a href="../reference/sha256.html">sha256()</a></code>, <code><a href="../reference/sha256.html">sha384()</a></code> and <code><a href="../reference/sha256.html">sha512()</a></code> series of fast, optimised cryptographic hash and HMAC generation functions using the ‘Mbed TLS’ library.</li>
+<li>
+<code><a href="../reference/ncurl.html">ncurl()</a></code> and <code><a href="../reference/stream.html">stream()</a></code> gain the argmument ‘pem’ for optionally specifying a certificate authority certificate chain PEM file for authenticating secure sites.</li>
+<li>
+<code><a href="../reference/ncurl.html">ncurl()</a></code> gains the argument ‘request’ for specifying response headers to return.</li>
+<li>
+<code><a href="../reference/ncurl.html">ncurl()</a></code> now returns additional <code>$status</code> (response status code) and <code>$headers</code> (response headers) fields.</li>
+<li>
+<code><a href="../reference/messenger.html">messenger()</a></code> gains the argument ‘auth’ for authenticating communications based on a pre-shared key.</li>
+<li>
+<code><a href="../reference/random.html">random()</a></code> gains the argument ‘n’ for generating a vector of random numbers.</li>
+</ul></div>
+<div class="section level5">
+<h5 id="updates-0-5-4">Updates<a class="anchor" aria-label="anchor" href="#updates-0-5-4"></a></h5>
+<ul><li>‘libmbedtls’ is now built from source upon install so the package always has TLS support and uses the latest v3.2.1 release. Windows binaries also updated to include TLS support.</li>
+<li>
+<code><a href="../reference/nng_version.html">nng_version()</a></code> now returns the ‘Mbed TLS’ library version number.</li>
+<li>
+<code><a href="../reference/device.html">device()</a></code> gains a confirmation prompt when running interactively for more safety.</li>
+<li>Fixes issue with <code><a href="../reference/ncurl.html">ncurl()</a></code> that caused a 26 cryptography error with certain secure sites using SNI.</li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.5.3" id="nanonext-053">nanonext 0.5.3<small>2022-08-08</small><a class="anchor" aria-label="anchor" href="#nanonext-053"></a></h2>
+<div class="section level5">
+<h5 id="updates-0-5-3">Updates<a class="anchor" aria-label="anchor" href="#updates-0-5-3"></a></h5>
+<ul><li>Configure script provides more information by default.</li>
+<li>Allows integer send/recv ‘mode’ arguments (note: this is an undocumented performance feature with no future guarantees).</li>
+<li>Aio ‘timeout’ arguments now default to NULL for applying the socket default, although non-breaking as -2L will also work.</li>
+<li>
+<code><a href="../reference/msleep.html">msleep()</a></code> made safe (does not block) in case of non-numeric input.</li>
+<li>Internal performance optimisations.</li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.5.2" id="nanonext-052">nanonext 0.5.2<small>2022-07-07</small><a class="anchor" aria-label="anchor" href="#nanonext-052"></a></h2>
+<div class="section level5">
+<h5 id="new-features-0-5-2">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-5-2"></a></h5>
+<ul><li>Adds <code><a href="../reference/mclock.html">mclock()</a></code>, <code><a href="../reference/msleep.html">msleep()</a></code> and <code><a href="../reference/random.html">random()</a></code> utilities exposing the library functions for timing and cryptographic RNG respectively.</li>
+<li>
+<code><a href="../reference/socket.html">socket()</a></code> gains the ability to open ‘raw’ mode sockets. Please note: this is not for general use - do not set this argument unless you have a specific need, such as for use with <code><a href="../reference/device.html">device()</a></code> (refer to NNG documentation).</li>
+<li>Implements <code><a href="../reference/device.html">device()</a></code> which creates a socket forwarder or proxy. Warning: use this in a separate process as this function blocks with no ability to interrupt.</li>
+</ul></div>
+<div class="section level5">
+<h5 id="updates-0-5-2">Updates<a class="anchor" aria-label="anchor" href="#updates-0-5-2"></a></h5>
+<ul><li>Internal performance optimisations.</li></ul></div>
+</div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.5.1" id="nanonext-051">nanonext 0.5.1<small>2022-06-10</small><a class="anchor" aria-label="anchor" href="#nanonext-051"></a></h2>
 <div class="section level5">
@@ -178,7 +282,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

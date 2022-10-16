@@ -20,7 +20,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nanonext</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.0.9010</span>
       </span>
     </div>
 
@@ -53,7 +53,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Set Survey Time</h1>
-    <small class="dont-index">Source: <a href="https://github.com/shikokuchuo/nanonext/blob/HEAD/R/protocol.R" class="external-link"><code>R/protocol.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/shikokuchuo/nanonext/blob/HEAD/R/opts.R" class="external-link"><code>R/opts.R</code></a></small>
     <div class="hidden name"><code>survey_time.Rd</code></div>
     </div>
 
@@ -65,25 +65,24 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">survey_time</span><span class="op">(</span><span class="va">con</span>, <span class="va">time</span><span class="op">)</span>
-
-<span class="co"># S3 method for nanoSocket</span>
-<span class="fu">survey_time</span><span class="op">(</span><span class="va">con</span>, <span class="va">time</span><span class="op">)</span>
-
-<span class="co"># S3 method for nanoContext</span>
-<span class="fu">survey_time</span><span class="op">(</span><span class="va">con</span>, <span class="va">time</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">survey_time</span><span class="op">(</span><span class="va">con</span>, <span class="va">time</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>con</dt>
 <dd><p>a Socket or Context using the 'surveyor' protocol.</p></dd>
+
+
 <dt>time</dt>
 <dd><p>the survey timeout in ms.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Invisibly, an integer exit code (zero on success).</p>
+    
+
+<p>Invisibly, an integer exit code (zero on success).</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -96,33 +95,23 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">sur</span> <span class="op">&lt;-</span> <span class="fu"><a href="socket.html">socket</a></span><span class="op">(</span><span class="st">"surveyor"</span>, listen <span class="op">=</span> <span class="st">"inproc://nanonext"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="socket.html">socket</a></span><span class="op">(</span><span class="st">"respondent"</span>, dial <span class="op">=</span> <span class="st">"inproc://nanonext"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">survey_time</span><span class="op">(</span><span class="va">sur</span>, <span class="fl">1000</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="send.html">send</a></span><span class="op">(</span><span class="va">sur</span>, <span class="st">"reply to this survey"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 58 0a 00 00 00 03 00 04 02 00 00 03 05 00 00 00 00 05 55 54 46 2d 38 00 00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [26] 00 10 00 00 00 01 00 04 00 09 00 00 00 14 72 65 70 6c 79 20 74 6f 20 74 68</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [51] 69 73 20 73 75 72 76 65 79</span>
-<span class="r-in"><span class="va">aio</span> <span class="op">&lt;-</span> <span class="fu"><a href="recv_aio.html">recv_aio</a></span><span class="op">(</span><span class="va">sur</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="recv.html">recv</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $raw</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 58 0a 00 00 00 03 00 04 02 00 00 03 05 00 00 00 00 05 55 54 46 2d 38 00 00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [26] 00 10 00 00 00 01 00 04 00 09 00 00 00 14 72 65 70 6c 79 20 74 6f 20 74 68</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [51] 69 73 20 73 75 72 76 65 79</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $data</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">sur</span> <span class="op">&lt;-</span> <span class="fu"><a href="socket.html">socket</a></span><span class="op">(</span><span class="st">"surveyor"</span>, listen <span class="op">=</span> <span class="st">"inproc://nanonext"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="socket.html">socket</a></span><span class="op">(</span><span class="st">"respondent"</span>, dial <span class="op">=</span> <span class="st">"inproc://nanonext"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">survey_time</span><span class="op">(</span><span class="va">sur</span>, <span class="fl">1000</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="send.html">send</a></span><span class="op">(</span><span class="va">sur</span>, <span class="st">"reply to this survey"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">aio</span> <span class="op">&lt;-</span> <span class="fu"><a href="recv_aio.html">recv_aio</a></span><span class="op">(</span><span class="va">sur</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="recv.html">recv</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "reply to this survey"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="send_aio.html">send_aio</a></span><span class="op">(</span><span class="va">res</span>, <span class="st">"replied"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="call_aio.html">call_aio</a></span><span class="op">(</span><span class="va">aio</span><span class="op">)</span><span class="op">$</span><span class="va">data</span></span>
+<span class="r-in"><span><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="send_aio.html">send_aio</a></span><span class="op">(</span><span class="va">res</span>, <span class="st">"replied"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="call_aio.html">call_aio</a></span><span class="op">(</span><span class="va">aio</span><span class="op">)</span><span class="op">$</span><span class="va">data</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "replied"</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="close.html">close</a></span><span class="op">(</span><span class="va">sur</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="close.html">close</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="close.html">close</a></span><span class="op">(</span><span class="va">sur</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="close.html">close</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -137,7 +126,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

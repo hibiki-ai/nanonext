@@ -18,7 +18,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nanonext</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.0.9010</span>
       </span>
     </div>
 
@@ -51,7 +51,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Subscribe Topic</h1>
-    <small class="dont-index">Source: <a href="https://github.com/shikokuchuo/nanonext/blob/HEAD/R/protocol.R" class="external-link"><code>R/protocol.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/shikokuchuo/nanonext/blob/HEAD/R/opts.R" class="external-link"><code>R/opts.R</code></a></small>
     <div class="hidden name"><code>subscribe.Rd</code></div>
     </div>
 
@@ -61,26 +61,25 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">subscribe</span><span class="op">(</span><span class="va">con</span>, topic <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="co"># S3 method for nanoSocket</span>
-<span class="fu">subscribe</span><span class="op">(</span><span class="va">con</span>, topic <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="co"># S3 method for nanoContext</span>
-<span class="fu">subscribe</span><span class="op">(</span><span class="va">con</span>, topic <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">subscribe</span><span class="op">(</span><span class="va">con</span>, topic <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>con</dt>
 <dd><p>a Socket or Context using the 'sub' protocol.</p></dd>
+
+
 <dt>topic</dt>
 <dd><p>[default NULL] an atomic type or NULL. The default NULL
 subscribes to all topics.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Invisibly, an integer exit code (zero on success).</p>
+    
+
+<p>Invisibly, an integer exit code (zero on success).</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -91,50 +90,30 @@ subscribes to all topics.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">pub</span> <span class="op">&lt;-</span> <span class="fu"><a href="socket.html">socket</a></span><span class="op">(</span><span class="st">"pub"</span>, listen <span class="op">=</span> <span class="st">"inproc://nanonext"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">sub</span> <span class="op">&lt;-</span> <span class="fu"><a href="socket.html">socket</a></span><span class="op">(</span><span class="st">"sub"</span>, dial <span class="op">=</span> <span class="st">"inproc://nanonext"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">subscribe</span><span class="op">(</span><span class="va">sub</span>, <span class="st">"examples"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="send.html">send</a></span><span class="op">(</span><span class="va">pub</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"examples"</span>, <span class="st">"this is an example"</span><span class="op">)</span>, mode <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 65 78 61 6d 70 6c 65 73 00 74 68 69 73 20 69 73 20 61 6e 20 65 78 61 6d 70</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [26] 6c 65 00</span>
-<span class="r-in"><span class="fu"><a href="recv.html">recv</a></span><span class="op">(</span><span class="va">sub</span>, <span class="st">"character"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $raw</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 65 78 61 6d 70 6c 65 73 00 74 68 69 73 20 69 73 20 61 6e 20 65 78 61 6d 70</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [26] 6c 65 00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $data</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">pub</span> <span class="op">&lt;-</span> <span class="fu"><a href="socket.html">socket</a></span><span class="op">(</span><span class="st">"pub"</span>, listen <span class="op">=</span> <span class="st">"inproc://nanonext"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sub</span> <span class="op">&lt;-</span> <span class="fu"><a href="socket.html">socket</a></span><span class="op">(</span><span class="st">"sub"</span>, dial <span class="op">=</span> <span class="st">"inproc://nanonext"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">subscribe</span><span class="op">(</span><span class="va">sub</span>, <span class="st">"examples"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="send.html">send</a></span><span class="op">(</span><span class="va">pub</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"examples"</span>, <span class="st">"this is an example"</span><span class="op">)</span>, mode <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="recv.html">recv</a></span><span class="op">(</span><span class="va">sub</span>, <span class="st">"character"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "examples"           "this is an example"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="fu"><a href="send.html">send</a></span><span class="op">(</span><span class="va">pub</span>, <span class="st">"examples will also be received"</span>, mode <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 65 78 61 6d 70 6c 65 73 20 77 69 6c 6c 20 61 6c 73 6f 20 62 65 20 72 65 63</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [26] 65 69 76 65 64 00</span>
-<span class="r-in"><span class="fu"><a href="recv.html">recv</a></span><span class="op">(</span><span class="va">sub</span>, <span class="st">"character"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $raw</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 65 78 61 6d 70 6c 65 73 20 77 69 6c 6c 20 61 6c 73 6f 20 62 65 20 72 65 63</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [26] 65 69 76 65 64 00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $data</span>
+<span class="r-in"><span><span class="fu"><a href="send.html">send</a></span><span class="op">(</span><span class="va">pub</span>, <span class="st">"examples will also be received"</span>, mode <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="recv.html">recv</a></span><span class="op">(</span><span class="va">sub</span>, <span class="st">"character"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "examples will also be received"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="fu"><a href="send.html">send</a></span><span class="op">(</span><span class="va">pub</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"other"</span>, <span class="st">"this other topic will not be received"</span><span class="op">)</span>, mode <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 6f 74 68 65 72 00 74 68 69 73 20 6f 74 68 65 72 20 74 6f 70 69 63 20 77 69</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [26] 6c 6c 20 6e 6f 74 20 62 65 20 72 65 63 65 69 76 65 64 00</span>
-<span class="r-in"><span class="fu"><a href="recv.html">recv</a></span><span class="op">(</span><span class="va">sub</span>, <span class="st">"character"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="send.html">send</a></span><span class="op">(</span><span class="va">pub</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"other"</span>, <span class="st">"this other topic will not be received"</span><span class="op">)</span>, mode <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="recv.html">recv</a></span><span class="op">(</span><span class="va">sub</span>, <span class="st">"character"</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>8 | Try again</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 'errorValue' int 8 </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">subscribe</span><span class="op">(</span><span class="va">sub</span>, <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="send.html">send</a></span><span class="op">(</span><span class="va">pub</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">10</span>, <span class="fl">10</span>, <span class="fl">20</span><span class="op">)</span>, mode <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 00 00 00 00 00 00 00 40 00 00 00 00 00 00 24 40 00 00 00 00 00 00 24 40 00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [26] 00 00 00 00 00 34 40</span>
-<span class="r-in"><span class="fu"><a href="recv.html">recv</a></span><span class="op">(</span><span class="va">sub</span>, <span class="st">"double"</span>, keep.raw <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">subscribe</span><span class="op">(</span><span class="va">sub</span>, <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="send.html">send</a></span><span class="op">(</span><span class="va">pub</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">10</span>, <span class="fl">10</span>, <span class="fl">20</span><span class="op">)</span>, mode <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="recv.html">recv</a></span><span class="op">(</span><span class="va">sub</span>, <span class="st">"double"</span>, keep.raw <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1]  2 10 10 20</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="close.html">close</a></span><span class="op">(</span><span class="va">pub</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="close.html">close</a></span><span class="op">(</span><span class="va">sub</span><span class="op">)</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="close.html">close</a></span><span class="op">(</span><span class="va">pub</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="close.html">close</a></span><span class="op">(</span><span class="va">sub</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -149,7 +128,7 @@ subscribes to all topics.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -19,6 +19,9 @@
     <loc>https://shikokuchuo.net/nanonext/news/index.html</loc>
   </url>
   <url>
+    <loc>https://shikokuchuo.net/nanonext/reference/base64enc.html</loc>
+  </url>
+  <url>
     <loc>https://shikokuchuo.net/nanonext/reference/call_aio.html</loc>
   </url>
   <url>
@@ -26,6 +29,9 @@
   </url>
   <url>
     <loc>https://shikokuchuo.net/nanonext/reference/context.html</loc>
+  </url>
+  <url>
+    <loc>https://shikokuchuo.net/nanonext/reference/device.html</loc>
   </url>
   <url>
     <loc>https://shikokuchuo.net/nanonext/reference/dial.html</loc>
@@ -49,7 +55,13 @@
     <loc>https://shikokuchuo.net/nanonext/reference/listen.html</loc>
   </url>
   <url>
+    <loc>https://shikokuchuo.net/nanonext/reference/mclock.html</loc>
+  </url>
+  <url>
     <loc>https://shikokuchuo.net/nanonext/reference/messenger.html</loc>
+  </url>
+  <url>
+    <loc>https://shikokuchuo.net/nanonext/reference/msleep.html</loc>
   </url>
   <url>
     <loc>https://shikokuchuo.net/nanonext/reference/nano.html</loc>
@@ -76,6 +88,9 @@
     <loc>https://shikokuchuo.net/nanonext/reference/protocols.html</loc>
   </url>
   <url>
+    <loc>https://shikokuchuo.net/nanonext/reference/random.html</loc>
+  </url>
+  <url>
     <loc>https://shikokuchuo.net/nanonext/reference/recv.html</loc>
   </url>
   <url>
@@ -95,6 +110,9 @@
   </url>
   <url>
     <loc>https://shikokuchuo.net/nanonext/reference/setopt.html</loc>
+  </url>
+  <url>
+    <loc>https://shikokuchuo.net/nanonext/reference/sha256.html</loc>
   </url>
   <url>
     <loc>https://shikokuchuo.net/nanonext/reference/socket.html</loc>

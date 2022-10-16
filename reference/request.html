@@ -19,7 +19,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nanonext</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.0.9010</span>
       </span>
     </div>
 
@@ -63,46 +63,59 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">request</span><span class="op">(</span>
-  <span class="va">context</span>,
-  <span class="va">data</span>,
-  send_mode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"serial"</span>, <span class="st">"raw"</span><span class="op">)</span>,
-  recv_mode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"serial"</span>, <span class="st">"character"</span>, <span class="st">"complex"</span>, <span class="st">"double"</span>, <span class="st">"integer"</span>, <span class="st">"logical"</span>,
-    <span class="st">"numeric"</span>, <span class="st">"raw"</span><span class="op">)</span>,
-  timeout <span class="op">=</span> <span class="op">-</span><span class="fl">2L</span>,
-  keep.raw <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">request</span><span class="op">(</span></span>
+<span>  <span class="va">context</span>,</span>
+<span>  <span class="va">data</span>,</span>
+<span>  send_mode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"serial"</span>, <span class="st">"raw"</span><span class="op">)</span>,</span>
+<span>  recv_mode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"serial"</span>, <span class="st">"character"</span>, <span class="st">"complex"</span>, <span class="st">"double"</span>, <span class="st">"integer"</span>, <span class="st">"logical"</span>,</span>
+<span>    <span class="st">"numeric"</span>, <span class="st">"raw"</span><span class="op">)</span>,</span>
+<span>  timeout <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  keep.raw <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>context</dt>
 <dd><p>a Context.</p></dd>
+
+
 <dt>data</dt>
 <dd><p>an object (if send_mode = 'raw', a vector).</p></dd>
+
+
 <dt>send_mode</dt>
 <dd><p>[default 'serial'] whether data will be sent serialized or
 as a raw vector. Use 'serial' for sending and receiving within R to ensure
 perfect reproducibility. Use 'raw' for sending vectors of any type (will be
 converted to a raw byte vector for sending) - essential when interfacing
 with external applications.</p></dd>
+
+
 <dt>recv_mode</dt>
-<dd><p>[default 'serial'] mode of vector to be received - one of 'serial',
-'character', 'complex', 'double', 'integer', 'logical', 'numeric', or 'raw'.
-The default 'serial' means a serialised R object, for the other modes,
-the raw vector received will be converted into the respective mode.</p></dd>
+<dd><p>[default 'serial'] mode of vector to be received - one of
+'serial', 'character', 'complex', 'double', 'integer', 'logical',
+'numeric', or 'raw'. The default 'serial' means a serialised R object, for
+the other modes, the raw vector received will be converted into the
+respective mode.</p></dd>
+
+
 <dt>timeout</dt>
-<dd><p>(optional) integer value in milliseconds. If unspecified, the
-default of -2L uses a socket-specific default, which is usually the same
-as no timeout. Note that this applies to receiving the result.</p></dd>
+<dd><p>[default NULL] integer value in milliseconds or NULL, which
+applies a socket-specific default, usually the same as no timeout. Note
+that this applies to receiving the result.</p></dd>
+
+
 <dt>keep.raw</dt>
-<dd><p>[default TRUE] logical flag whether to keep the received raw
-vector (useful for verification e.g. via hashing). If FALSE, will return
-the converted data only.</p></dd>
+<dd><p>[default FALSE] logical flag whether to keep and return the
+received raw vector along with the converted data.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A 'recvAio' (object of class 'recvAio').</p>
+    
+
+<p>A 'recvAio' (object of class 'recvAio') (invisibly).</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -121,22 +134,23 @@ the converted data only.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">req</span> <span class="op">&lt;-</span> <span class="fu"><a href="socket.html">socket</a></span><span class="op">(</span><span class="st">"req"</span>, listen <span class="op">=</span> <span class="st">"tcp://127.0.0.1:6546"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">rep</span> <span class="op">&lt;-</span> <span class="fu"><a href="socket.html">socket</a></span><span class="op">(</span><span class="st">"rep"</span>, dial <span class="op">=</span> <span class="st">"tcp://127.0.0.1:6546"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">ctxq</span> <span class="op">&lt;-</span> <span class="fu"><a href="context.html">context</a></span><span class="op">(</span><span class="va">req</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">ctxp</span> <span class="op">&lt;-</span> <span class="fu"><a href="context.html">context</a></span><span class="op">(</span><span class="va">rep</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># works if req and rep are running in parallel in different processes</span></span>
-<span class="r-in"><span class="fu"><a href="reply.html">reply</a></span><span class="op">(</span><span class="va">ctxp</span>, execute <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span> <span class="op">+</span> <span class="fl">1</span>, timeout <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">req</span> <span class="op">&lt;-</span> <span class="fu"><a href="socket.html">socket</a></span><span class="op">(</span><span class="st">"req"</span>, listen <span class="op">=</span> <span class="st">"tcp://127.0.0.1:6546"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">rep</span> <span class="op">&lt;-</span> <span class="fu"><a href="socket.html">socket</a></span><span class="op">(</span><span class="st">"rep"</span>, dial <span class="op">=</span> <span class="st">"tcp://127.0.0.1:6546"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">ctxq</span> <span class="op">&lt;-</span> <span class="fu"><a href="context.html">context</a></span><span class="op">(</span><span class="va">req</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ctxp</span> <span class="op">&lt;-</span> <span class="fu"><a href="context.html">context</a></span><span class="op">(</span><span class="va">rep</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># works if req and rep are running in parallel in different processes</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="reply.html">reply</a></span><span class="op">(</span><span class="va">ctxp</span>, execute <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span> <span class="op">+</span> <span class="fl">1</span>, timeout <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>5 | Timed out</span>
-<span class="r-in"><span class="va">aio</span> <span class="op">&lt;-</span> <span class="fu">request</span><span class="op">(</span><span class="va">ctxq</span>, data <span class="op">=</span> <span class="fl">2022</span>, timeout <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="call_aio.html">call_aio</a></span><span class="op">(</span><span class="va">aio</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 'errorValue' int 5 </span>
+<span class="r-in"><span><span class="va">aio</span> <span class="op">&lt;-</span> <span class="fu">request</span><span class="op">(</span><span class="va">ctxq</span>, data <span class="op">=</span> <span class="fl">2022</span>, timeout <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="call_aio.html">call_aio</a></span><span class="op">(</span><span class="va">aio</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>5 | Timed out</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="close.html">close</a></span><span class="op">(</span><span class="va">req</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="close.html">close</a></span><span class="op">(</span><span class="va">rep</span><span class="op">)</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="close.html">close</a></span><span class="op">(</span><span class="va">req</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="close.html">close</a></span><span class="op">(</span><span class="va">rep</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -151,7 +165,7 @@ the converted data only.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
