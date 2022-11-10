@@ -19,7 +19,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nanonext</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.7.0.9000</span>
       </span>
     </div>
 
@@ -77,13 +77,13 @@
     <p>A convenience function for building concurrent applications. The
     resolution of the clock depends on the underlying system timing facilities
     and may not be particularly fine-grained. This utility should however be
-    faster than using base <code><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time()</a></code>.</p>
+    faster than using <code><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time()</a></code>.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">time</span> <span class="op">&lt;-</span> <span class="fu">mclock</span><span class="op">(</span><span class="op">)</span>; <span class="fu"><a href="msleep.html">msleep</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>; <span class="fu">mclock</span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">time</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 101</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 102</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
