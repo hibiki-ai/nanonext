@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">nanonext</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.7.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.7.3.9002</span>
       </span>
     </div>
 
@@ -321,7 +321,7 @@
 <span><span class="co">#&gt; &lt; recvAio &gt;</span></span>
 <span><span class="co">#&gt;  - $data for message data</span></span>
 <span><span class="va">aio</span><span class="op">$</span><span class="va">data</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  num [1:100000000] 2.593 -0.328 0.571 0.646 1.092 ...</span></span></code></pre></div>
+<span><span class="co">#&gt;  num [1:100000000] 0.324 2.571 0.506 -1.11 -1.26 ...</span></span></code></pre></div>
 <p>As <code><a href="reference/call_aio.html">call_aio()</a></code> is blocking and will wait for completion, an alternative is to query <code>aio$data</code> directly. This will return an ‘unresolved’ logical NA value if the calculation is yet to complete.</p>
 <p>In this example the calculation is returned, but other operations may reside entirely on the server side, for example writing data to disk.</p>
 <p>In such a case, calling or querying the value confirms that the operation has completed, and provides the return value of the function, which may typically be NULL or an exit code.</p>
@@ -360,7 +360,7 @@
 <span><span class="va">sub</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/recv.html">recv</a></span><span class="op">(</span><span class="st">"character"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "newTopic"            "this is a new topic"</span></span>
 <span></span>
-<span><span class="va">sub</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/unsubscribe.html">unsubscribe</a></span><span class="op">(</span>topic <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span><span class="va">sub</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/subscribe.html">unsubscribe</a></span><span class="op">(</span>topic <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
 <span><span class="va">pub</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/send.html">send</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"newTopic"</span>, <span class="st">"this topic will now not be received"</span><span class="op">)</span>, mode <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0</span></span>
 <span><span class="va">sub</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/recv.html">recv</a></span><span class="op">(</span><span class="st">"character"</span><span class="op">)</span></span>
@@ -446,11 +446,11 @@
 <span><span class="co">#&gt;   [1] 7b 0a 20 20 22 68 65 61 64 65 72 73 22 3a 20 7b 0a 20 20 20 20 22 48 6f 73</span></span>
 <span><span class="co">#&gt;  [26] 74 22 3a 20 22 68 74 74 70 62 69 6e 2e 6f 72 67 22 2c 20 0a 20 20 20 20 22</span></span>
 <span><span class="co">#&gt;  [51] 58 2d 41 6d 7a 6e 2d 54 72 61 63 65 2d 49 64 22 3a 20 22 52 6f 6f 74 3d 31</span></span>
-<span><span class="co">#&gt;  [76] 2d 36 33 63 35 31 62 33 37 2d 36 32 32 38 63 38 61 37 33 36 61 37 63 63 34</span></span>
-<span><span class="co">#&gt; [101] 61 34 39 34 33 39 36 66 66 22 0a 20 20 7d 0a 7d 0a</span></span>
+<span><span class="co">#&gt;  [76] 2d 36 33 66 33 64 39 66 62 2d 30 33 62 36 66 65 37 33 30 31 37 62 62 32 37</span></span>
+<span><span class="co">#&gt; [101] 32 37 37 30 65 34 63 65 36 22 0a 20 20 7d 0a 7d 0a</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $data</span></span>
-<span><span class="co">#&gt; [1] "{\n  \"headers\": {\n    \"Host\": \"httpbin.org\", \n    \"X-Amzn-Trace-Id\": \"Root=1-63c51b37-6228c8a736a7cc4a494396ff\"\n  }\n}\n"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "{\n  \"headers\": {\n    \"Host\": \"httpbin.org\", \n    \"X-Amzn-Trace-Id\": \"Root=1-63f3d9fb-03b6fe73017bb272770e4ce6\"\n  }\n}\n"</span></span></code></pre></div>
 <p>For advanced use, supports additional HTTP methods such as POST or PUT.</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ncurl.html">ncurl</a></span><span class="op">(</span><span class="st">"http://httpbin.org/post"</span>,</span>
@@ -468,14 +468,48 @@
 <span></span>
 <span><span class="fu"><a href="reference/call_aio.html">call_aio</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span><span class="op">$</span><span class="va">headers</span></span>
 <span><span class="co">#&gt; $Date</span></span>
-<span><span class="co">#&gt; [1] "Mon, 16 Jan 2023 09:39:03 GMT"</span></span>
+<span><span class="co">#&gt; [1] "Mon, 20 Feb 2023 20:37:16 GMT"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $Server</span></span>
 <span><span class="co">#&gt; [1] "gunicorn/19.9.0"</span></span>
 <span></span>
 <span><span class="va">res</span><span class="op">$</span><span class="va">data</span></span>
-<span><span class="co">#&gt; [1] "{\n  \"args\": {}, \n  \"data\": \"{\\\"key\\\": \\\"value\\\"}\", \n  \"files\": {}, \n  \"form\": {}, \n  \"headers\": {\n    \"Authorization\": \"Bearer APIKEY\", \n    \"Content-Length\": \"16\", \n    \"Content-Type\": \"application/json\", \n    \"Host\": \"httpbin.org\", \n    \"X-Amzn-Trace-Id\": \"Root=1-63c51b37-0a9c25b56da3a6841d860396\"\n  }, \n  \"json\": {\n    \"key\": \"value\"\n  }, \n  \"origin\": \"212.36.172.203\", \n  \"url\": \"http://httpbin.org/post\"\n}\n"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "{\n  \"args\": {}, \n  \"data\": \"{\\\"key\\\": \\\"value\\\"}\", \n  \"files\": {}, \n  \"form\": {}, \n  \"headers\": {\n    \"Authorization\": \"Bearer APIKEY\", \n    \"Content-Length\": \"16\", \n    \"Content-Type\": \"application/json\", \n    \"Host\": \"httpbin.org\", \n    \"X-Amzn-Trace-Id\": \"Root=1-63f3d9fc-409464580d78cda00532a07b\"\n  }, \n  \"json\": {\n    \"key\": \"value\"\n  }, \n  \"origin\": \"131.111.5.14\", \n  \"url\": \"http://httpbin.org/post\"\n}\n"</span></span></code></pre></div>
 <p>In this respect, it may be used as a performant and lightweight method for making REST API requests.</p>
+<p><code><a href="reference/ncurl_session.html">ncurl_session()</a></code> creates a re-usable open connection and presents a much faster and more efficient solution for repeated polling of an API endpoint. <code><a href="reference/ncurl_session.html">transact()</a></code> is then used to request data multiple times as required. This method allows a polling frequency that exceeds a server’s new connection limits, where this is permitted.</p>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sess</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ncurl_session.html">ncurl_session</a></span><span class="op">(</span><span class="st">"https://httpbin.org/get"</span>,</span>
+<span>                      headers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>`Content-Type` <span class="op">=</span> <span class="st">"application/json"</span>, Authorization <span class="op">=</span> <span class="st">"Bearer APIKEY"</span><span class="op">)</span>,</span>
+<span>                      response <span class="op">=</span> <span class="st">"date"</span><span class="op">)</span></span>
+<span><span class="va">sess</span></span>
+<span><span class="co">#&gt; &lt; ncurlSession &gt;</span></span>
+<span><span class="co">#&gt;  - use transact() to return data</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/ncurl_session.html">transact</a></span><span class="op">(</span><span class="va">sess</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $status</span></span>
+<span><span class="co">#&gt; [1] 200</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $headers</span></span>
+<span><span class="co">#&gt; $headers$date</span></span>
+<span><span class="co">#&gt; [1] "Mon, 20 Feb 2023 20:37:16 GMT"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $raw</span></span>
+<span><span class="co">#&gt;   [1] 7b 0a 20 20 22 61 72 67 73 22 3a 20 7b 7d 2c 20 0a 20 20 22 68 65 61 64 65</span></span>
+<span><span class="co">#&gt;  [26] 72 73 22 3a 20 7b 0a 20 20 20 20 22 41 75 74 68 6f 72 69 7a 61 74 69 6f 6e</span></span>
+<span><span class="co">#&gt;  [51] 22 3a 20 22 42 65 61 72 65 72 20 41 50 49 4b 45 59 22 2c 20 0a 20 20 20 20</span></span>
+<span><span class="co">#&gt;  [76] 22 43 6f 6e 74 65 6e 74 2d 54 79 70 65 22 3a 20 22 61 70 70 6c 69 63 61 74</span></span>
+<span><span class="co">#&gt; [101] 69 6f 6e 2f 6a 73 6f 6e 22 2c 20 0a 20 20 20 20 22 48 6f 73 74 22 3a 20 22</span></span>
+<span><span class="co">#&gt; [126] 68 74 74 70 62 69 6e 2e 6f 72 67 22 2c 20 0a 20 20 20 20 22 58 2d 41 6d 7a</span></span>
+<span><span class="co">#&gt; [151] 6e 2d 54 72 61 63 65 2d 49 64 22 3a 20 22 52 6f 6f 74 3d 31 2d 36 33 66 33</span></span>
+<span><span class="co">#&gt; [176] 64 39 66 63 2d 35 31 66 63 38 37 34 63 37 66 35 36 66 34 33 63 37 30 65 66</span></span>
+<span><span class="co">#&gt; [201] 66 32 33 36 22 0a 20 20 7d 2c 20 0a 20 20 22 6f 72 69 67 69 6e 22 3a 20 22</span></span>
+<span><span class="co">#&gt; [226] 31 38 35 2e 32 32 35 2e 34 35 2e 34 39 22 2c 20 0a 20 20 22 75 72 6c 22 3a</span></span>
+<span><span class="co">#&gt; [251] 20 22 68 74 74 70 73 3a 2f 2f 68 74 74 70 62 69 6e 2e 6f 72 67 2f 67 65 74</span></span>
+<span><span class="co">#&gt; [276] 22 0a 7d 0a</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $data</span></span>
+<span><span class="co">#&gt; [1] "{\n  \"args\": {}, \n  \"headers\": {\n    \"Authorization\": \"Bearer APIKEY\", \n    \"Content-Type\": \"application/json\", \n    \"Host\": \"httpbin.org\", \n    \"X-Amzn-Trace-Id\": \"Root=1-63f3d9fc-51fc874c7f56f43c70eff236\"\n  }, \n  \"origin\": \"185.225.45.49\", \n  \"url\": \"https://httpbin.org/get\"\n}\n"</span></span></code></pre></div>
 <p><a href="#table-of-contents">« Back to ToC</a></p>
 </div>
 <div class="section level3">
@@ -483,7 +517,7 @@
 </h3>
 <p><code><a href="reference/stream.html">stream()</a></code> exposes NNG’s low-level byte stream interface for communicating with raw sockets. This may be used for connecting to arbitrary non-NNG endpoints.</p>
 <p>The stream interface can be used to communicate with (secure) websocket servers. The argument <code>textframes = TRUE</code> can be specified where the websocket server uses text rather than binary frames.</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># official demo API key used below</span></span>
 <span><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/stream.html">stream</a></span><span class="op">(</span>dial <span class="op">=</span> <span class="st">"wss://ws.eodhistoricaldata.com/ws/forex?api_token=OeAFFmMliFG5orCUuwAKQ8l4WWFQ67YX"</span>,</span>
 <span>            textframes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -493,7 +527,7 @@
 <span><span class="co">#&gt;  - url: wss://ws.eodhistoricaldata.com/ws/forex?api_token=OeAFFmMliFG5orCUuwAKQ8l4WWFQ67YX</span></span>
 <span><span class="co">#&gt;  - textframes: TRUE</span></span></code></pre></div>
 <p><code><a href="reference/send.html">send()</a></code> and <code><a href="reference/recv.html">recv()</a></code>, as well as their asynchronous counterparts <code><a href="reference/send_aio.html">send_aio()</a></code> and <code><a href="reference/recv_aio.html">recv_aio()</a></code> can be used on Streams in the same way as Sockets. This affords a great deal of flexibility in ingesting and processing streaming data.</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">s</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/recv.html">recv</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "{\"status_code\":200,\"message\":\"Authorized\"}"</span></span>
 <span></span>
@@ -501,10 +535,10 @@
 <span><span class="co">#&gt; [1] 0</span></span>
 <span></span>
 <span><span class="va">s</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/recv.html">recv</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "{\"s\":\"EURUSD\",\"a\":1.08243,\"b\":1.08241,\"dc\":\"0.0185\",\"dd\":\"0.0002\",\"ppms\":false,\"t\":1673861944000}"</span></span>
+<span><span class="co">#&gt; [1] "{\"s\":\"EURUSD\",\"a\":1.06867,\"b\":1.0686,\"dc\":\"0.0271\",\"dd\":\"0.0003\",\"ppms\":false,\"t\":1676925442000}"</span></span>
 <span></span>
 <span><span class="va">s</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/recv.html">recv</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "{\"s\":\"EURUSD\",\"a\":1.08242,\"b\":1.0824,\"dc\":\"0.0176\",\"dd\":\"0.0002\",\"ppms\":false,\"t\":1673861944000}"</span></span>
+<span><span class="co">#&gt; [1] "{\"s\":\"EURUSD\",\"a\":1.06866,\"b\":1.06859,\"dc\":\"0.0262\",\"dd\":\"0.0003\",\"ppms\":false,\"t\":1676925442000}"</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/close.html">close</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span></span></code></pre></div>
 <p><a href="#table-of-contents">« Back to ToC</a></p>
@@ -515,7 +549,7 @@
 <p>Functions performing hashing using the SHA-2 series of algorithms is included: <code><a href="reference/sha256.html">sha224()</a></code>, <code><a href="reference/sha256.html">sha256()</a></code>, <code><a href="reference/sha256.html">sha384()</a></code> and <code><a href="reference/sha256.html">sha512()</a></code>.</p>
 <p>These call the secure, optimized implementations from the ‘Mbed TLS’ library and return a hash either directly as a raw vector or converted to a character string. For use in authentication, raw vectors can be compared directly for the highest performance.</p>
 <p>To generate an HMAC (hash-based message authentication code), simply supply the value ‘key’ to use as the secret key.</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/sha256.html">sha256</a></span><span class="op">(</span><span class="st">"hello world!"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "7509e5bda0c762d2bac7f90d758b5b2263fa01ccbc542ab5e3df163be08e6ca9"</span></span>
 <span></span>
@@ -526,7 +560,7 @@
 <span><span class="fu"><a href="reference/sha256.html">sha256</a></span><span class="op">(</span><span class="st">"hello world!"</span>, key <span class="op">=</span> <span class="st">"MY_SECRET"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "d8f0e2d368ff632682d55e2c1ccd49c15f8a6a3862d8eb68f1906b6ee658890a"</span></span></code></pre></div>
 <p>Optimised functions for base64 encoding and decoding from the ‘Mbed TLS’ library are also provided:</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/base64enc.html">base64enc</a></span><span class="op">(</span><span class="st">"hello world!"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "aGVsbG8gd29ybGQh"</span></span>
 <span></span>
@@ -540,17 +574,17 @@
 <div class="section level4">
 <h4 id="linux--mac--solaris">Linux / Mac / Solaris<a class="anchor" aria-label="anchor" href="#linux--mac--solaris"></a>
 </h4>
-<p>Installation from source requires ‘libnng’ &gt;= v1.6.0 and ‘libmbedtls’ &gt;= 2 - suitable installations are automatically detected - or else ‘cmake’ to compile ‘libnng’ v1.6.0 pre-release (539e559) and ‘libmbedtls’ v3.2.1 included within the package sources.</p>
+<p>Installation from source requires ‘libnng’ &gt;= v1.6.0 and ‘libmbedtls’ &gt;= 2 - suitable installations are automatically detected - or else ‘cmake’ to compile ‘libnng’ v1.6.0 pre-release (8e1836f) and ‘libmbedtls’ v3.2.1 included within the package sources.</p>
 <p>Note: ‘libnng’ v1.6.0 is not yet available in system repositories; ‘libmbedtls’ is available as libmbedtls-dev (deb) or libmbedtls-devel (rpm).</p>
 <p>The ‘INCLUDE_DIR’ and ‘LIB_DIR’ environment variables may be set prior to package installation to specify a custom location for ‘libmbedtls’ or ‘libnng’ other than the standard filesystem locations.</p>
 <p>Package installation will automatically build the libraries if required.</p>
-<p><em>Additional requirements for Solaris: (i) the ‘xz’ package - available on OpenCSW, and (ii) a more recent version of ‘cmake’ than that available on OpenCSW - see the ‘cmake’ website for the latest source file which can be built with just a C compiler.</em></p>
+<p><em>Additional requirements for Solaris: (i) the ‘xz’ package - available on OpenCSW, and (ii) a more recent version of ‘cmake’ than available on OpenCSW - refer to the ‘cmake’ website for the latest source file (requiring only a C compiler to build).</em></p>
 </div>
 <div class="section level4">
 <h4 id="windows">Windows<a class="anchor" aria-label="anchor" href="#windows"></a>
 </h4>
-<p>For R &gt;= 4.2 using the ‘rtools42’ toolchain, ‘libnng’ v1.6.0 (539e559) and ‘libmbedtls’ v3.2.1 will be automatically compiled from the package sources during installation.</p>
-<p>For previous R versions, pre-compiled ‘libnng’ v1.6.0 (539e559) and ‘libmbedtls’ v3.2.1 libraries are downloaded and used for installation instead.</p>
+<p>For R &gt;= 4.2 using the ‘rtools42’ toolchain, ‘libnng’ v1.6.0 (8e1836f) and ‘libmbedtls’ v3.2.1 will be automatically compiled from the package sources during installation.</p>
+<p>For previous R versions, pre-compiled ‘libnng’ v1.6.0 (8e1836f) and ‘libmbedtls’ v3.2.1 libraries are downloaded and used for installation instead.</p>
 <p><a href="#table-of-contents">« Back to ToC</a></p>
 </div>
 </div>

@@ -37,9 +37,6 @@
     <loc>https://shikokuchuo.net/nanonext/reference/dial.html</loc>
   </url>
   <url>
-    <loc>https://shikokuchuo.net/nanonext/reference/getopt.html</loc>
-  </url>
-  <url>
     <loc>https://shikokuchuo.net/nanonext/reference/index.html</loc>
   </url>
   <url>
@@ -47,12 +44,6 @@
   </url>
   <url>
     <loc>https://shikokuchuo.net/nanonext/reference/is_error_value.html</loc>
-  </url>
-  <url>
-    <loc>https://shikokuchuo.net/nanonext/reference/is_nano.html</loc>
-  </url>
-  <url>
-    <loc>https://shikokuchuo.net/nanonext/reference/is_nul_byte.html</loc>
   </url>
   <url>
     <loc>https://shikokuchuo.net/nanonext/reference/listen.html</loc>
@@ -85,7 +76,7 @@
     <loc>https://shikokuchuo.net/nanonext/reference/nng_version.html</loc>
   </url>
   <url>
-    <loc>https://shikokuchuo.net/nanonext/reference/opts.html</loc>
+    <loc>https://shikokuchuo.net/nanonext/reference/opt.html</loc>
   </url>
   <url>
     <loc>https://shikokuchuo.net/nanonext/reference/protocols.html</loc>
@@ -112,9 +103,6 @@
     <loc>https://shikokuchuo.net/nanonext/reference/send_aio.html</loc>
   </url>
   <url>
-    <loc>https://shikokuchuo.net/nanonext/reference/setopt.html</loc>
-  </url>
-  <url>
     <loc>https://shikokuchuo.net/nanonext/reference/sha256.html</loc>
   </url>
   <url>
@@ -122,6 +110,9 @@
   </url>
   <url>
     <loc>https://shikokuchuo.net/nanonext/reference/start.html</loc>
+  </url>
+  <url>
+    <loc>https://shikokuchuo.net/nanonext/reference/stat.html</loc>
   </url>
   <url>
     <loc>https://shikokuchuo.net/nanonext/reference/status_code.html</loc>
@@ -139,15 +130,9 @@
     <loc>https://shikokuchuo.net/nanonext/reference/survey_time.html</loc>
   </url>
   <url>
-    <loc>https://shikokuchuo.net/nanonext/reference/transact.html</loc>
-  </url>
-  <url>
     <loc>https://shikokuchuo.net/nanonext/reference/transports.html</loc>
   </url>
   <url>
     <loc>https://shikokuchuo.net/nanonext/reference/unresolved.html</loc>
-  </url>
-  <url>
-    <loc>https://shikokuchuo.net/nanonext/reference/unsubscribe.html</loc>
   </url>
 </urlset>
