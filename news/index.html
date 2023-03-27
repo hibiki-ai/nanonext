@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nanonext</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.1</span>
       </span>
     </div>
 
@@ -54,17 +54,26 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.8.0.9000" id="nanonext-0809000-development">nanonext 0.8.0.9000 (development)<a class="anchor" aria-label="anchor" href="#nanonext-0809000-development"></a></h2>
+<h2 class="page-header" data-toc-text="0.8.1" id="nanonext-081">nanonext 0.8.1<a class="anchor" aria-label="anchor" href="#nanonext-081"></a></h2>
 <div class="section level5">
-<h5 id="new-features-0-8-0-9000">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-8-0-9000"></a></h5>
-<ul><li>Implements condition variables (from the NNG library), which allows the R execution thread to wait until it is signalled by an incoming message - adding functions <code><a href="../reference/cv.html">cv()</a></code>, <code><a href="../reference/cv.html">wait()</a></code>, <code><a href="../reference/cv.html">until()</a></code>, <code><a href="../reference/cv.html">cv_value()</a></code> and <code><a href="../reference/cv.html">cv_reset()</a></code>, as well as signalling receive functions <code><a href="../reference/recv_aio.html">recv_aio_signal()</a></code> and <code><a href="../reference/request.html">request_signal()</a></code>.</li>
-<li>Adds the <code><a href="../reference/sha1.html">sha1()</a></code> fast cryptographic hash and HMAC generation function from the ‘Mbed TLS’ library. Use one of the SHA-2 algorithms for secure applications.</li>
-<li>Implements <code><a href="../reference/dot-unresolved.html">.unresolved()</a></code> as a fast method (not for general use) that just queries the status of an Aio without attempting to retrieve result status or messages.</li>
-<li>Implements <code><a href="../reference/msg_pipe.html">msg_pipe()</a></code> to return the ‘nanoPipe’ pipe connection associated with a ‘recvAio’ message.</li>
+<h5 id="new-features-0-8-1">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-8-1"></a></h5>
+<ul><li>Implements synchronisation primitives from the NNG library. Condition variables allow the R execution thread to wait until it is signalled by an incoming message or pipe event.
+<ul><li>adds core functions <code><a href="../reference/cv.html">cv()</a></code>, <code><a href="../reference/cv.html">wait()</a></code>, <code><a href="../reference/cv.html">until()</a></code>, <code><a href="../reference/cv.html">cv_value()</a></code>, and <code><a href="../reference/cv.html">cv_reset()</a></code>.</li>
+<li>adds signalling receive functions <code><a href="../reference/recv_aio.html">recv_aio_signal()</a></code> and <code><a href="../reference/request.html">request_signal()</a></code>.</li>
+<li>
+<code><a href="../reference/pipe_notify.html">pipe_notify()</a></code> signals up to 2 condition variables whenever pipes are added or removed at a socket.</li>
+</ul></li>
+<li>Adds <code><a href="../reference/msg_pipe.html">msg_pipe()</a></code> to return the pipe connection associated with a ‘recvAio’ message.</li>
+<li>Exposes the <code><a href="../reference/sha1.html">sha1()</a></code> cryptographic hash and HMAC generation function from the ‘Mbed TLS’ library (for secure applications, use one of the SHA-2 algorithms instead).</li>
+<li>Utility function <code><a href="../reference/weakref-set.html">'weakref&lt;-'()</a></code> exposes <code>R_MakeWeakRef</code> from R’s C API. Useful for keeping objects alive for as long as required by a dependent object.</li>
 </ul></div>
 <div class="section level5">
-<h5 id="updates-0-8-0-9000">Updates<a class="anchor" aria-label="anchor" href="#updates-0-8-0-9000"></a></h5>
-<ul><li>Internal performance enhancements.</li>
+<h5 id="updates-0-8-1">Updates<a class="anchor" aria-label="anchor" href="#updates-0-8-1"></a></h5>
+<ul><li>
+<code><a href="../reference/ncurl_session.html">ncurl_session()</a></code> gains a ‘timeout’ argument, and returns an ‘errorValue’ with warning upon error.</li>
+<li>
+<code><a href="../reference/listen.html">listen()</a></code> and <code><a href="../reference/dial.html">dial()</a></code> gain the new logical argument ‘error’ to govern the function behaviour upon error.</li>
+<li>Internal performance enhancements.</li>
 </ul></div>
 </div>
     <div class="section level2">
