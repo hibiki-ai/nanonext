@@ -19,7 +19,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nanonext</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.2.9006</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.2.9009</span>
       </span>
     </div>
 
@@ -63,7 +63,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">context</span><span class="op">(</span><span class="va">socket</span>, verify <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">context</span><span class="op">(</span><span class="va">socket</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -72,12 +72,8 @@
 <dd><p>a Socket.</p></dd>
 
 
-<dt>verify</dt>
-<dd><p>[default TRUE] logical value whether to verify there is a
-connection at the socket with the result stored internally within the
-context (required for features of certain functions). Set to FALSE for
-performance if not using features which explicitly require verification.
-Supplying a non-logical value will error.</p></dd>
+<dt>...</dt>
+<dd><p>not used, present for compatibility purposes only.</p></dd>
 
 </dl></div>
     <div id="value">
