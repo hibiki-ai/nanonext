@@ -40,6 +40,9 @@
     <loc>https://shikokuchuo.net/nanonext/reference/dial.html</loc>
   </url>
   <url>
+    <loc>https://shikokuchuo.net/nanonext/reference/dot-context.html</loc>
+  </url>
+  <url>
     <loc>https://shikokuchuo.net/nanonext/reference/dot-unresolved.html</loc>
   </url>
   <url>
@@ -71,6 +74,9 @@
   </url>
   <url>
     <loc>https://shikokuchuo.net/nanonext/reference/nanonext-package.html</loc>
+  </url>
+  <url>
+    <loc>https://shikokuchuo.net/nanonext/reference/nanonext_version.html</loc>
   </url>
   <url>
     <loc>https://shikokuchuo.net/nanonext/reference/ncurl.html</loc>
