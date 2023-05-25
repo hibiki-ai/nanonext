@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nanonext</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.3.9017</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.3.9020</span>
       </span>
     </div>
 
@@ -59,42 +59,49 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tls_config</span><span class="op">(</span>client <span class="op">=</span> <span class="cn">NULL</span>, server <span class="op">=</span> <span class="cn">NULL</span>, pass <span class="op">=</span> <span class="cn">NULL</span>, auth <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tls_config</span><span class="op">(</span>client <span class="op">=</span> <span class="cn">NULL</span>, server <span class="op">=</span> <span class="cn">NULL</span>, pass <span class="op">=</span> <span class="cn">NULL</span>, auth <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">server</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>client</dt>
-<dd><p>(optional) for creating a client configuration, the absolute
-path to a file containing X.509 certificate(s) in PEM format, comprising
-the certificate authority certificate chain (and revocation list if
-present), used to validate certificates presented by peers.</p></dd>
+<dd><p>(optional) for creating a client configuration:</p>
+<p><strong>either</strong> the absolute path to a file containing X.509
+    certificate(s) in PEM format, comprising the certificate authority
+    certificate chain (and revocation list if present), used to validate
+    certificates presented by peers,</p>
+<p><strong>or</strong> a length 2 character vector comprising [i] the certificate
+    authority certificate chain and [ii] the certificate revocation list or
+    the empty character <code>""</code> if not applicable.</p></dd>
 
 
 <dt>server</dt>
-<dd><p>(optional) for creating a server configuration, the absolute
-path to a single file containing the PEM encoded certificate and
-associated private key, along with any additional certificates leading to
-a validation chain, the leaf certificate first. It is not required to
-include the self-signed root.</p></dd>
+<dd><p>(optional) for creating a server configuration:</p>
+<p><strong>either</strong> the absolute path to a single file containing the PEM
+    encoded certificate and associated private key (may contain additional
+    certificates leading to a validation chain, with the leaf certificate
+    first, although the self-signed root is not required as the client should
+    already have this),</p>
+<p><strong>or</strong> a length 2 character vector comprising [i] the certificate
+    (optionally certificate chain) and [ii] the associated private or secret
+    key.</p></dd>
 
 
 <dt>pass</dt>
-<dd><p>[default NULL] required only if the secret key contained in the
-file supplied to 'server' is encrypted with a password. Do not provide
-directly in case it is cached or recorded in history, but through an
-object or function that returns the value.</p></dd>
+<dd><p>[default NULL] required only if the secret key supplied to
+'server' is encrypted with a password. For security, consider providing
+through a function that returns this value, rather than directly.</p></dd>
 
 
 <dt>auth</dt>
-<dd><p>[default TRUE] logical value whether to require authentication,
-in which case a check is made to ensure that the peer has presented a
-certificate, and the session is refused if it is invalid or missing.
-Otherwise, authentication is optional, in which case a certificate is
-validated if presented by the peer, but if not then the session is
-allowed to proceed without authentication. If both 'client' and 'server'
-are not supplied, then no authentication is performed and this argument
-has no effect. Supplying a non-logical value will error.</p></dd>
+<dd><p>(optional) logical value whether to require authentication - by
+default TRUE for client and FALSE for server configurations. If TRUE, the
+session is only allowed to proceed if the peer has presented a certificate
+and it has been validated. If FALSE, authentication is optional, whereby
+a certificate is validated if presented by the peer, but the session
+allowed to proceed otherwise. If neither 'client' nor 'server' are
+supplied, then no authentication is performed and this argument has no
+effect. Supplying a non-logical value will error.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -105,14 +112,22 @@ has no effect. Supplying a non-logical value will error.</p></dd>
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>Up-to-date CA certificates in PEM format, extracted from Mozilla,
-    are available at: <a href="https://curl.se/docs/caextract.html" class="external-link">https://curl.se/docs/caextract.html</a>. This link is
-    not endorsed; use at your own risk.</p>
+    <p>Specify one of 'client' or 'server' only, or neither (in which case
+    an empty client configuration is created), as a configuration can only be
+    of one type.</p>
+<p>For creating client configurations for public internet usage, up-to-date
+    CA certificates in PEM format, extracted from Mozilla, are available at:
+    <a href="https://curl.se/docs/caextract.html" class="external-link">https://curl.se/docs/caextract.html</a>. This link is not endorsed; use
+    at your own risk.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">tls</span> <span class="op">&lt;-</span> <span class="fu">tls_config</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">tls</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt; TLS client configuration &gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  - auth mode: none</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  - [ empty ]</span>
 <span class="r-in"><span><span class="fu"><a href="ncurl.html">ncurl</a></span><span class="op">(</span><span class="st">"https://www.r-project.org/"</span>, timeout <span class="op">=</span> <span class="fl">1000L</span>, tls <span class="op">=</span> <span class="va">tls</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $status</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 'errorValue' int 5 | Timed out</span>
