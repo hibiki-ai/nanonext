@@ -85,6 +85,9 @@
     <loc>https://shikokuchuo.net/nanonext/reference/nng_error.html</loc>
   </url>
   <url>
+    <loc>https://shikokuchuo.net/nanonext/reference/nng_fini.html</loc>
+  </url>
+  <url>
     <loc>https://shikokuchuo.net/nanonext/reference/nng_version.html</loc>
   </url>
   <url>
@@ -142,6 +145,9 @@
     <loc>https://shikokuchuo.net/nanonext/reference/stop_aio.html</loc>
   </url>
   <url>
+    <loc>https://shikokuchuo.net/nanonext/reference/strcat.html</loc>
+  </url>
+  <url>
     <loc>https://shikokuchuo.net/nanonext/reference/stream.html</loc>
   </url>
   <url>
@@ -161,5 +167,11 @@
   </url>
   <url>
     <loc>https://shikokuchuo.net/nanonext/reference/unresolved.html</loc>
+  </url>
+  <url>
+    <loc>https://shikokuchuo.net/nanonext/reference/weakref.html</loc>
+  </url>
+  <url>
+    <loc>https://shikokuchuo.net/nanonext/reference/write_cert.html</loc>
   </url>
 </urlset>
