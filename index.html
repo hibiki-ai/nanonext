@@ -48,7 +48,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">nanonext</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.9.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.9.2.9000</span>
       </span>
     </div>
 
@@ -111,7 +111,7 @@
 <li>WebSocket</li>
 <li>TLS (over TCP and WebSocket)</li>
 </ul>
-<p>Development of the TLS implementation was generously supported by an <a href="https://www.r-consortium.org/all-projects/awarded-projects/2023-group-1" class="external-link">R Consortium ISC grant (2023)</a>.</p>
+<p>Development of the TLS implementation was generously supported by the <a href="https://www.r-consortium.org/all-projects/awarded-projects/2023-group-1" alt="R Consortium ISC Grant 2023" class="external-link"><img src="reference/figures/RConsortium.png" alt="R Consortium logo" width="100"></a> .</p>
 <p>Web utilities:</p>
 <ul>
 <li>ncurl - (async) http(s) client</li>
@@ -138,7 +138,7 @@
 <li><a href="#cryptographic-hashing">Cryptographic Hashing</a></li>
 <li><a href="#options-and-statistics">Options and Statistics</a></li>
 <li><a href="#building-from-source">Building from Source</a></li>
-<li><a href="#links">Links</a></li>
+<li><a href="#acknowledgements-and-links">Acknowledgements and Links</a></li>
 </ol>
 </div>
 <div class="section level3">
@@ -240,10 +240,9 @@
 <p>An ‘Aio’ object returns an unresolved value whilst its asynchronous operation is ongoing, automatically resolving to a final value once complete.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># an async receive is requested, but no messages are waiting (yet to be sent)</span></span>
-<span><span class="va">msg</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/recv_aio.html">recv_aio</a></span><span class="op">(</span><span class="va">s2</span>, keep.raw <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">msg</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/recv_aio.html">recv_aio</a></span><span class="op">(</span><span class="va">s2</span><span class="op">)</span></span>
 <span><span class="va">msg</span></span>
 <span><span class="co">#&gt; &lt; recvAio &gt;</span></span>
-<span><span class="co">#&gt;  - $raw for raw message</span></span>
 <span><span class="co">#&gt;  - $data for message data</span></span>
 <span><span class="va">msg</span><span class="op">$</span><span class="va">data</span></span>
 <span><span class="co">#&gt; 'unresolved' logi NA</span></span></code></pre></div>
@@ -256,22 +255,12 @@
 <span><span class="va">res</span><span class="op">$</span><span class="va">result</span></span>
 <span><span class="co">#&gt; [1] 0</span></span></code></pre></div>
 <p><em>Note: a return value of 0 denotes a successful send, meaning that the message has been accepted by the socket for sending; the message itself may still be buffered within the system.</em></p>
-<p>For a ‘recvAio’ object, the message is stored at <code>$data</code>, and the raw message at <code>$raw</code> (if kept).</p>
+<p>For a ‘recvAio’ object, the message is stored at <code>$data</code>.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># now that a message has been sent, the 'recvAio' resolves automatically</span></span>
 <span><span class="va">msg</span><span class="op">$</span><span class="va">data</span></span>
 <span><span class="co">#&gt;   a b</span></span>
-<span><span class="co">#&gt; 1 1 2</span></span>
-<span><span class="va">msg</span><span class="op">$</span><span class="va">raw</span></span>
-<span><span class="co">#&gt;   [1] 58 0a 00 00 00 03 00 04 03 01 00 03 05 00 00 00 00 05 55 54 46 2d 38 00 00</span></span>
-<span><span class="co">#&gt;  [26] 03 13 00 00 00 02 00 00 00 0e 00 00 00 01 3f f0 00 00 00 00 00 00 00 00 00</span></span>
-<span><span class="co">#&gt;  [51] 0e 00 00 00 01 40 00 00 00 00 00 00 00 00 00 04 02 00 00 00 01 00 04 00 09</span></span>
-<span><span class="co">#&gt;  [76] 00 00 00 05 6e 61 6d 65 73 00 00 00 10 00 00 00 02 00 04 00 09 00 00 00 01</span></span>
-<span><span class="co">#&gt; [101] 61 00 04 00 09 00 00 00 01 62 00 00 04 02 00 00 00 01 00 04 00 09 00 00 00</span></span>
-<span><span class="co">#&gt; [126] 05 63 6c 61 73 73 00 00 00 10 00 00 00 01 00 04 00 09 00 00 00 0a 64 61 74</span></span>
-<span><span class="co">#&gt; [151] 61 2e 66 72 61 6d 65 00 00 04 02 00 00 00 01 00 04 00 09 00 00 00 09 72 6f</span></span>
-<span><span class="co">#&gt; [176] 77 2e 6e 61 6d 65 73 00 00 00 0d 00 00 00 02 80 00 00 00 ff ff ff ff 00 00</span></span>
-<span><span class="co">#&gt; [201] 00 fe</span></span></code></pre></div>
+<span><span class="co">#&gt; 1 1 2</span></span></code></pre></div>
 <p>Auxiliary function <code><a href="reference/unresolved.html">unresolved()</a></code> may be used in control flow statements to perform actions which depend on resolution of the Aio, both before and after. This means there is no need to actually wait (block) for an Aio to resolve, as the example below demonstrates.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">msg</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/recv_aio.html">recv_aio</a></span><span class="op">(</span><span class="va">s2</span><span class="op">)</span></span>
@@ -329,7 +318,7 @@
 <span><span class="co">#&gt; &lt; recvAio &gt;</span></span>
 <span><span class="co">#&gt;  - $data for message data</span></span>
 <span><span class="va">aio</span><span class="op">$</span><span class="va">data</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  num [1:100000000] 0.509 -0.819 -0.305 -0.645 -1.277 ...</span></span></code></pre></div>
+<span><span class="co">#&gt;  num [1:100000000] 0.165 -1.03 -0.484 0.15 1.194 ...</span></span></code></pre></div>
 <p>As <code><a href="reference/call_aio.html">call_aio()</a></code> is blocking and will wait for completion, an alternative is to query <code>aio$data</code> directly. This will return an ‘unresolved’ logical NA value if the calculation is yet to complete.</p>
 <p>In this example the calculation is returned, but other operations may reside entirely on the server side, for example writing data to disk.</p>
 <p>In such a case, calling or querying the value confirms that the operation has completed, and provides the return value of the function, which may typically be NULL or an exit code.</p>
@@ -421,7 +410,7 @@
 <code class="sourceCode R"><span><span class="va">cert</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/write_cert.html">write_cert</a></span><span class="op">(</span>cn <span class="op">=</span> <span class="st">"127.0.0.1"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">cert</span><span class="op">)</span></span>
 <span><span class="co">#&gt; List of 2</span></span>
-<span><span class="co">#&gt;  $ server: chr [1:2] "-----BEGIN CERTIFICATE-----\nMIIFFTCCAv2gAwIBAgIBATANBgkqhkiG9w0BAQsFADAiMRIwEAYDVQQDDAkxMjcu\nMC4wLjExDDAKBgNV"| __truncated__ "-----BEGIN RSA PRIVATE KEY-----\nMIIJKQIBAAKCAgEAvW8WSk+mqpqy0J8Ii0d/oybhrHn4IG0gkfl+Kp+sPpWlKyBF\nygUjTvbxG8EV"| __truncated__</span></span>
+<span><span class="co">#&gt;  $ server: chr [1:2] "-----BEGIN CERTIFICATE-----\nMIIFFTCCAv2gAwIBAgIBATANBgkqhkiG9w0BAQsFADAiMRIwEAYDVQQDDAkxMjcu\nMC4wLjExDDAKBgNV"| __truncated__ "-----BEGIN RSA PRIVATE KEY-----\nMIIJKAIBAAKCAgEAoyoAZWVYtYAUAfYYG0Vd3ZTGh+FcgMfD9gStfEnlTywtBJHn\ngtA9zq6OZJ23"| __truncated__</span></span>
 <span><span class="co">#&gt;  $ client: chr [1:2] "-----BEGIN CERTIFICATE-----\nMIIFFTCCAv2gAwIBAgIBATANBgkqhkiG9w0BAQsFADAiMRIwEAYDVQQDDAkxMjcu\nMC4wLjExDDAKBgNV"| __truncated__ ""</span></span>
 <span></span>
 <span><span class="va">ser</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tls_config.html">tls_config</a></span><span class="op">(</span>server <span class="op">=</span> <span class="va">cert</span><span class="op">$</span><span class="va">server</span><span class="op">)</span></span>
@@ -555,7 +544,7 @@
 <p>By setting <code>async = TRUE</code>, it performs requests asynchronously, returning immediately with an ‘ncurlAio’.</p>
 <p>For normal use, it takes just the URL. It can follow redirects.</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/ncurl.html">ncurl</a></span><span class="op">(</span><span class="st">"https://httpbin.org/get"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/ncurl.html">ncurl</a></span><span class="op">(</span><span class="st">"https://postman-echo.com/get"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $status</span></span>
 <span><span class="co">#&gt; [1] 200</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -563,25 +552,18 @@
 <span><span class="co">#&gt; NULL</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $raw</span></span>
-<span><span class="co">#&gt;   [1] 7b 0a 20 20 22 61 72 67 73 22 3a 20 7b 7d 2c 20 0a 20 20 22 68 65 61 64 65</span></span>
-<span><span class="co">#&gt;  [26] 72 73 22 3a 20 7b 0a 20 20 20 20 22 48 6f 73 74 22 3a 20 22 68 74 74 70 62</span></span>
-<span><span class="co">#&gt;  [51] 69 6e 2e 6f 72 67 22 2c 20 0a 20 20 20 20 22 58 2d 41 6d 7a 6e 2d 54 72 61</span></span>
-<span><span class="co">#&gt;  [76] 63 65 2d 49 64 22 3a 20 22 52 6f 6f 74 3d 31 2d 36 34 39 65 61 37 62 64 2d</span></span>
-<span><span class="co">#&gt; [101] 32 39 64 65 31 63 34 38 33 32 64 35 36 64 64 32 37 65 61 66 62 35 65 32 22</span></span>
-<span><span class="co">#&gt; [126] 0a 20 20 7d 2c 20 0a 20 20 22 6f 72 69 67 69 6e 22 3a 20 22 32 31 32 2e 33</span></span>
-<span><span class="co">#&gt; [151] 36 2e 31 37 32 2e 32 30 33 22 2c 20 0a 20 20 22 75 72 6c 22 3a 20 22 68 74</span></span>
-<span><span class="co">#&gt; [176] 74 70 73 3a 2f 2f 68 74 74 70 62 69 6e 2e 6f 72 67 2f 67 65 74 22 0a 7d 0a</span></span>
+<span><span class="co">#&gt; NULL</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $data</span></span>
-<span><span class="co">#&gt; [1] "{\n  \"args\": {}, \n  \"headers\": {\n    \"Host\": \"httpbin.org\", \n    \"X-Amzn-Trace-Id\": \"Root=1-649ea7bd-29de1c4832d56dd27eafb5e2\"\n  }, \n  \"origin\": \"131.111.5.14\", \n  \"url\": \"https://httpbin.org/get\"\n}\n"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "{\n  \"args\": {},\n  \"headers\": {\n    \"x-forwarded-proto\": \"https\",\n    \"x-forwarded-port\": \"443\",\n    \"host\": \"postman-echo.com\",\n    \"x-amzn-trace-id\": \"Root=1-64cbb085-342dac4b52f4818a5987b9a9\"\n  },\n  \"url\": \"https://postman-echo.com/get\"\n}"</span></span></code></pre></div>
 <p>For advanced use, supports additional HTTP methods such as POST or PUT.</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ncurl.html">ncurl</a></span><span class="op">(</span><span class="st">"http://httpbin.org/post"</span>,</span>
+<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ncurl.html">ncurl</a></span><span class="op">(</span><span class="st">"https://postman-echo.com/post"</span>,</span>
 <span>             async <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>             method <span class="op">=</span> <span class="st">"POST"</span>,</span>
 <span>             headers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>`Content-Type` <span class="op">=</span> <span class="st">"application/json"</span>, Authorization <span class="op">=</span> <span class="st">"Bearer APIKEY"</span><span class="op">)</span>,</span>
 <span>             data <span class="op">=</span> <span class="st">'{"key": "value"}'</span>,</span>
-<span>             response <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Date"</span>, <span class="st">"Server"</span><span class="op">)</span><span class="op">)</span></span>
+<span>             response <span class="op">=</span> <span class="st">"date"</span><span class="op">)</span></span>
 <span><span class="va">res</span></span>
 <span><span class="co">#&gt; &lt; ncurlAio &gt;</span></span>
 <span><span class="co">#&gt;  - $status for response status code</span></span>
@@ -590,20 +572,19 @@
 <span><span class="co">#&gt;  - $data for message data</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/call_aio.html">call_aio</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span><span class="op">$</span><span class="va">headers</span></span>
-<span><span class="co">#&gt; $Date</span></span>
-<span><span class="co">#&gt; [1] "Fri, 30 Jun 2023 10:00:35 GMT"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $Server</span></span>
-<span><span class="co">#&gt; [1] "gunicorn/19.9.0"</span></span>
+<span><span class="co">#&gt; $date</span></span>
+<span><span class="co">#&gt; [1] "Thu, 03 Aug 2023 13:49:58 GMT"</span></span>
 <span></span>
 <span><span class="va">res</span><span class="op">$</span><span class="va">data</span></span>
-<span><span class="co">#&gt; [1] "{\n  \"args\": {}, \n  \"data\": \"{\\\"key\\\": \\\"value\\\"}\", \n  \"files\": {}, \n  \"form\": {}, \n  \"headers\": {\n    \"Authorization\": \"Bearer APIKEY\", \n    \"Content-Length\": \"16\", \n    \"Content-Type\": \"application/json\", \n    \"Host\": \"httpbin.org\", \n    \"X-Amzn-Trace-Id\": \"Root=1-649ea7c1-1113ec495a7a47f754b97ae5\"\n  }, \n  \"json\": {\n    \"key\": \"value\"\n  }, \n  \"origin\": \"131.111.5.14\", \n  \"url\": \"http://httpbin.org/post\"\n}\n"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "{\n  \"args\": {},\n  \"data\": {\n    \"key\": \"value\"\n  },\n  \"files\": {},\n  \"form\": {},\n  \"headers\": {\n    \"x-forwarded-proto\": \"https\",\n    \"x-forwarded-port\": \"443\",\n    \"host\": \"postman-echo.com\",\n    \"x-amzn-trace-id\": \"Root=1-64cbb086-59b4a1145957f60535aebdb1\",\n    \"content-length\": \"16\",\n    \"content-type\": \"application/json\",\n    \"authorization\": \"Bearer APIKEY\"\n  },\n  \"json\": {\n    \"key\": \"value\"\n  },\n  \"url\": \"https://postman-echo.com/post\"\n}"</span></span></code></pre></div>
 <p>In this respect, it may be used as a performant and lightweight method for making REST API requests.</p>
 <p><code><a href="reference/ncurl_session.html">ncurl_session()</a></code> creates a re-usable open connection and presents a much faster and more efficient solution for repeated polling of an API endpoint. <code><a href="reference/ncurl_session.html">transact()</a></code> is then used to request data multiple times as required. This method allows a polling frequency that exceeds a server’s new connection limits, where this is permitted.</p>
+<p>By specifying <code>convert = FALSE</code>, the received binary data is made available as a raw vector at <code>$raw</code>. This may be fed into ‘json’ parsers which can operate directly on such data etc.</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sess</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ncurl_session.html">ncurl_session</a></span><span class="op">(</span><span class="st">"https://httpbin.org/get"</span>,</span>
+<code class="sourceCode R"><span><span class="va">sess</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ncurl_session.html">ncurl_session</a></span><span class="op">(</span><span class="st">"https://postman-echo.com/get"</span>,</span>
+<span>                      convert <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>                      headers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>`Content-Type` <span class="op">=</span> <span class="st">"application/json"</span>, Authorization <span class="op">=</span> <span class="st">"Bearer APIKEY"</span><span class="op">)</span>,</span>
-<span>                      response <span class="op">=</span> <span class="st">"date"</span><span class="op">)</span></span>
+<span>                      response <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Date"</span>, <span class="st">"Content-Type"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">sess</span></span>
 <span><span class="co">#&gt; &lt; ncurlSession &gt;</span></span>
 <span><span class="co">#&gt;  - use transact() to return data</span></span>
@@ -613,26 +594,30 @@
 <span><span class="co">#&gt; [1] 200</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $headers</span></span>
-<span><span class="co">#&gt; $headers$date</span></span>
-<span><span class="co">#&gt; [1] "Fri, 30 Jun 2023 10:00:36 GMT"</span></span>
+<span><span class="co">#&gt; $headers$Date</span></span>
+<span><span class="co">#&gt; [1] "Thu, 03 Aug 2023 13:49:59 GMT"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $headers$`Content-Type`</span></span>
+<span><span class="co">#&gt; [1] "application/json; charset=utf-8"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $raw</span></span>
-<span><span class="co">#&gt;   [1] 7b 0a 20 20 22 61 72 67 73 22 3a 20 7b 7d 2c 20 0a 20 20 22 68 65 61 64 65</span></span>
-<span><span class="co">#&gt;  [26] 72 73 22 3a 20 7b 0a 20 20 20 20 22 41 75 74 68 6f 72 69 7a 61 74 69 6f 6e</span></span>
-<span><span class="co">#&gt;  [51] 22 3a 20 22 42 65 61 72 65 72 20 41 50 49 4b 45 59 22 2c 20 0a 20 20 20 20</span></span>
-<span><span class="co">#&gt;  [76] 22 43 6f 6e 74 65 6e 74 2d 54 79 70 65 22 3a 20 22 61 70 70 6c 69 63 61 74</span></span>
-<span><span class="co">#&gt; [101] 69 6f 6e 2f 6a 73 6f 6e 22 2c 20 0a 20 20 20 20 22 48 6f 73 74 22 3a 20 22</span></span>
-<span><span class="co">#&gt; [126] 68 74 74 70 62 69 6e 2e 6f 72 67 22 2c 20 0a 20 20 20 20 22 58 2d 41 6d 7a</span></span>
-<span><span class="co">#&gt; [151] 6e 2d 54 72 61 63 65 2d 49 64 22 3a 20 22 52 6f 6f 74 3d 31 2d 36 34 39 65</span></span>
-<span><span class="co">#&gt; [176] 61 37 63 33 2d 37 61 61 33 31 61 65 37 30 36 31 33 35 39 33 62 32 63 65 65</span></span>
-<span><span class="co">#&gt; [201] 33 30 31 61 22 0a 20 20 7d 2c 20 0a 20 20 22 6f 72 69 67 69 6e 22 3a 20 22</span></span>
-<span><span class="co">#&gt; [226] 32 31 32 2e 33 36 2e 31 37 32 2e 32 30 33 22 2c 20 0a 20 20 22 75 72 6c 22</span></span>
-<span><span class="co">#&gt; [251] 3a 20 22 68 74 74 70 73 3a 2f 2f 68 74 74 70 62 69 6e 2e 6f 72 67 2f 67 65</span></span>
-<span><span class="co">#&gt; [276] 74 22 0a 7d 0a</span></span>
+<span><span class="co">#&gt;   [1] 7b 0a 20 20 22 61 72 67 73 22 3a 20 7b 7d 2c 0a 20 20 22 68 65 61 64 65 72</span></span>
+<span><span class="co">#&gt;  [26] 73 22 3a 20 7b 0a 20 20 20 20 22 78 2d 66 6f 72 77 61 72 64 65 64 2d 70 72</span></span>
+<span><span class="co">#&gt;  [51] 6f 74 6f 22 3a 20 22 68 74 74 70 73 22 2c 0a 20 20 20 20 22 78 2d 66 6f 72</span></span>
+<span><span class="co">#&gt;  [76] 77 61 72 64 65 64 2d 70 6f 72 74 22 3a 20 22 34 34 33 22 2c 0a 20 20 20 20</span></span>
+<span><span class="co">#&gt; [101] 22 68 6f 73 74 22 3a 20 22 70 6f 73 74 6d 61 6e 2d 65 63 68 6f 2e 63 6f 6d</span></span>
+<span><span class="co">#&gt; [126] 22 2c 0a 20 20 20 20 22 78 2d 61 6d 7a 6e 2d 74 72 61 63 65 2d 69 64 22 3a</span></span>
+<span><span class="co">#&gt; [151] 20 22 52 6f 6f 74 3d 31 2d 36 34 63 62 62 30 38 36 2d 35 37 38 33 37 31 62</span></span>
+<span><span class="co">#&gt; [176] 38 30 39 34 33 32 62 39 64 37 35 36 32 37 33 35 37 22 2c 0a 20 20 20 20 22</span></span>
+<span><span class="co">#&gt; [201] 63 6f 6e 74 65 6e 74 2d 74 79 70 65 22 3a 20 22 61 70 70 6c 69 63 61 74 69</span></span>
+<span><span class="co">#&gt; [226] 6f 6e 2f 6a 73 6f 6e 22 2c 0a 20 20 20 20 22 61 75 74 68 6f 72 69 7a 61 74</span></span>
+<span><span class="co">#&gt; [251] 69 6f 6e 22 3a 20 22 42 65 61 72 65 72 20 41 50 49 4b 45 59 22 0a 20 20 7d</span></span>
+<span><span class="co">#&gt; [276] 2c 0a 20 20 22 75 72 6c 22 3a 20 22 68 74 74 70 73 3a 2f 2f 70 6f 73 74 6d</span></span>
+<span><span class="co">#&gt; [301] 61 6e 2d 65 63 68 6f 2e 63 6f 6d 2f 67 65 74 22 0a 7d</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $data</span></span>
-<span><span class="co">#&gt; [1] "{\n  \"args\": {}, \n  \"headers\": {\n    \"Authorization\": \"Bearer APIKEY\", \n    \"Content-Type\": \"application/json\", \n    \"Host\": \"httpbin.org\", \n    \"X-Amzn-Trace-Id\": \"Root=1-649ea7c3-7aa31ae70613593b2cee301a\"\n  }, \n  \"origin\": \"131.111.5.14\", \n  \"url\": \"https://httpbin.org/get\"\n}\n"</span></span></code></pre></div>
+<span><span class="co">#&gt; NULL</span></span></code></pre></div>
 <p><a href="#table-of-contents">« Back to ToC</a></p>
 </div>
 <div class="section level3">
@@ -745,7 +730,7 @@
 <div class="section level4">
 <h4 id="linux--mac--solaris">Linux / Mac / Solaris<a class="anchor" aria-label="anchor" href="#linux--mac--solaris"></a>
 </h4>
-<p>Installation from source requires ‘libnng’ &gt;= v1.5.0 and ‘libmbedtls’ &gt;= 2 (suitable installations are automatically detected), or else ‘cmake’ to compile ‘libnng’ v1.6.0 pre-release (8e1836f) and ‘libmbedtls’ v3.4.0 included within the package sources.</p>
+<p>Installation from source requires ‘libnng’ &gt;= v1.5.0 and ‘libmbedtls’ &gt;= 2 (suitable installations are automatically detected), or else ‘cmake’ to compile ‘libnng’ v1.6.0 alpha (c5e9d8a) and ‘libmbedtls’ v3.4.0 included within the package sources.</p>
 <p><strong>It is recommended for optimal performance and stability to let the package automatically compile bundled versions of ‘libmbedtls’ and ‘libnng’ during installation.</strong> To always compile the libraries from source even if system installations exist, set the <code>NANONEXT_LIBS</code> environment variable prior to installation e.g. by <code>Sys.setenv(NANONEXT_LIBS = 1)</code>.</p>
 <p>It is neither necessary nor recommended to install system libraries, but ‘libnng’ is available as libnng-dev (deb) or nng-devel (rpm), and ‘libmbedtls’ is available as libmbedtls-dev (deb) or libmbedtls-devel (rpm). The <code>INCLUDE_DIR</code> and <code>LIB_DIR</code> environment variables may be set prior to package installation to specify a custom location for ‘libmbedtls’ or ‘libnng’ other than the standard filesystem locations.</p>
 <p><em>Additional requirements for Solaris: (i) the ‘xz’ package - available on OpenCSW, and (ii) a more recent version of ‘cmake’ than available on OpenCSW - refer to the ‘cmake’ website for the latest source file.</em></p>
@@ -753,14 +738,27 @@
 <div class="section level4">
 <h4 id="windows">Windows<a class="anchor" aria-label="anchor" href="#windows"></a>
 </h4>
-<p>For R &gt;= 4.2 using the ‘Rtools42’ or ‘Rtools43’ toolchains, ‘libnng’ v1.6.0 pre-release (8e1836f) and ‘libmbedtls’ v3.4.0 will be automatically compiled from the package sources during installation.</p>
-<p>For previous R versions, pre-compiled ‘libnng’ v1.6.0 pre-release (8e1836f) and ‘libmbedtls’ v3.4.0 libraries are downloaded and used for installation instead.</p>
+<p>For R &gt;= 4.2 using the ‘Rtools42’ or ‘Rtools43’ toolchains, ‘libnng’ v1.6.0 alpha (c5e9d8a) and ‘libmbedtls’ v3.4.0 will be automatically compiled from the package sources during installation.</p>
+<p>For previous R versions, pre-compiled ‘libnng’ v1.6.0 alpha (c5e9d8a) and ‘libmbedtls’ v3.4.0 libraries are downloaded and used for installation instead.</p>
 <p><a href="#table-of-contents">« Back to ToC</a></p>
 </div>
 </div>
 <div class="section level3">
-<h3 id="links">Links<a class="anchor" aria-label="anchor" href="#links"></a>
+<h3 id="acknowledgements-and-links">Acknowledgements and Links<a class="anchor" aria-label="anchor" href="#acknowledgements-and-links"></a>
 </h3>
+<p>We would like to acknowledge in particular:</p>
+<ul>
+<li>
+<a href="https://github.com/gdamore" class="external-link">Garrett D’Amore</a>, author of the NNG library, who has been generous with advice and also implemented a feature request specifically for a more efficient ‘aio’ implementation in {nanonext}.</li>
+<li>The <a href="https://www.r-consortium.org/" class="external-link">R Consortium</a> for funding the development of the secure TLS capabilities in the package, and <a href="https://github.com/HenrikBengtsson" class="external-link">Henrik Bengtsson</a> and <a href="https://github.com/wlandau/" class="external-link">William Landau</a>’s roles in making this possible.</li>
+<li>
+<a href="https://www.r-project.org/contributors.html" class="external-link">R Core</a> for various auxiliary functions for serialisation and raw / character conversion, which have been adopted by the package.</li>
+<li>
+<a href="https://homepage.stat.uiowa.edu/~luke/" class="external-link">Luke Tierney</a> for documenting R’s serialization mechanism and <a href="https://github.com/coolbutuseless" class="external-link">mikefc</a> for meticulous annotations in {serializer}, which led to the package’s own implementation of a low-level interface to R serialisation.</li>
+<li>
+<a href="https://github.com/jeroen" class="external-link">Jeroen Ooms</a> - for his ‘Anticonf (tm)’ configure script, on which our original ‘configure’ was based, although much modified since.</li>
+</ul>
+<p>Links:</p>
 <p><code>nanonext</code> website: <a href="https://shikokuchuo.net/nanonext/" class="uri">https://shikokuchuo.net/nanonext/</a><br><code>nanonext</code> on CRAN: <a href="https://cran.r-project.org/package=nanonext" class="external-link uri">https://cran.r-project.org/package=nanonext</a><br></p>
 <p><code>nanonext</code> is listed in CRAN Task Views:<br> - High Performance Computing: <a href="https://cran.r-project.org/view=HighPerformanceComputing" class="external-link uri">https://cran.r-project.org/view=HighPerformanceComputing</a><br> - Web Technologies: <a href="https://cran.r-project.org/view=WebTechnologies" class="external-link uri">https://cran.r-project.org/view=WebTechnologies</a><br></p>
 <p>NNG website: <a href="https://nng.nanomsg.org/" class="external-link uri">https://nng.nanomsg.org/</a><br> Mbed TLS website: <a href="https://www.trustedfirmware.org/projects/mbed-tls/" class="external-link uri">https://www.trustedfirmware.org/projects/mbed-tls/</a><br></p>
@@ -806,7 +804,8 @@
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Charlie Gao <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-0750-061X" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>R Consortium <br><small class="roles"> Funder </small>  </li>
+<li>
+<img src="https://shikokuchuo.net/nanonext/reference/figures/RConsortium.png" alt="R Consortium" width="100"><br><small class="roles"> Funder </small>  </li>
 <li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
@@ -828,7 +827,7 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by Charlie Gao, R Consortium.</p>
+<p>Developed by Charlie Gao, <img src="https://shikokuchuo.net/nanonext/reference/figures/RConsortium.png" alt="R Consortium" width="100">.</p>
 </div>
 
 <div class="pkgdown">
