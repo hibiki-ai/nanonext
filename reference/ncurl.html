@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nanonext</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.9.2.9007</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.9.2.9008</span>
       </span>
     </div>
 
@@ -80,8 +80,8 @@
 
 
 <dt>async</dt>
-<dd><p>[default FALSE] logical value whether to perform an async request,
-in which case an 'ncurlAio' is returned instead of a list.</p></dd>
+<dd><p>[default FALSE] logical value whether to perform an async request.
+This option is deprecated, use <code><a href="ncurl_aio.html">ncurl_aio</a></code> instead.</p></dd>
 
 
 <dt>convert</dt>
@@ -92,9 +92,9 @@ non-text data. Supplying a non-logical value will error.</p></dd>
 
 <dt>follow</dt>
 <dd><p>[default FALSE] logical value whether to automatically follow
-redirects (not applicable for async requests). If FALSE (or async), the
-redirect address is returned as response header 'Location'. Supplying
-a non-logical value will error.</p></dd>
+redirects (not applicable for async requests). If FALSE, the redirect
+address is returned as response header 'Location'. Supplying a non-logical
+value will error.</p></dd>
 
 
 <dt>method</dt>
@@ -152,7 +152,8 @@ NULL, certificates are not validated.</p></dd>
     </div>
     <div id="see-also">
     <h2>See also</h2>
-    <div class="dont-index"><p><code><a href="ncurl_session.html">ncurl_session</a></code> for persistent connections.</p></div>
+    <div class="dont-index"><p><code><a href="ncurl_aio.html">ncurl_aio</a></code> for asynchronous http requests;
+    <code><a href="ncurl_session.html">ncurl_session</a></code> for persistent connections.</p></div>
     </div>
 
     <div id="ref-examples">
@@ -166,7 +167,7 @@ NULL, certificates are not validated.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers$date</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Tue, 15 Aug 2023 11:44:26 GMT"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Tue, 15 Aug 2023 13:47:57 GMT"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers$server</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Apache"</span>
@@ -465,12 +466,12 @@ NULL, certificates are not validated.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $data</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "{\n  \"args\": {},\n  \"data\": \"hello world\",\n  \"files\": {},\n  \"form\": {},\n  \"headers\": {\n    \"x-forwarded-proto\": \"https\",\n    \"x-forwarded-port\": \"443\",\n    \"host\": \"postman-echo.com\",\n    \"x-amzn-trace-id\": \"Root=1-64db651a-3c2d3b202d0082c747b72e62\",\n    \"content-length\": \"11\",\n    \"authorization\": \"Bearer APIKEY\",\n    \"content-type\": \"application/json\"\n  },\n  \"json\": null,\n  \"url\": \"https://postman-echo.com/put\"\n}"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "{\n  \"args\": {},\n  \"data\": \"hello world\",\n  \"files\": {},\n  \"form\": {},\n  \"headers\": {\n    \"x-forwarded-proto\": \"https\",\n    \"x-forwarded-port\": \"443\",\n    \"host\": \"postman-echo.com\",\n    \"x-amzn-trace-id\": \"Root=1-64db820d-4229b4c72f35248830748cbf\",\n    \"content-length\": \"11\",\n    \"authorization\": \"Bearer APIKEY\",\n    \"content-type\": \"application/json\"\n  },\n  \"json\": null,\n  \"url\": \"https://postman-echo.com/put\"\n}"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">ncurl</span><span class="op">(</span><span class="st">"https://postman-echo.com/post"</span>,</span></span>
 <span class="r-in"><span>      method <span class="op">=</span> <span class="st">"POST"</span>,</span></span>
 <span class="r-in"><span>      headers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>`Content-Type` <span class="op">=</span> <span class="st">"application/json"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>      data <span class="op">=</span> <span class="st">'{"k":"v"}'</span>,</span></span>
+<span class="r-in"><span>      data <span class="op">=</span> <span class="st">'{"key":"value"}'</span>,</span></span>
 <span class="r-in"><span>      timeout <span class="op">=</span> <span class="fl">1500L</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $status</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 200</span>
@@ -482,7 +483,7 @@ NULL, certificates are not validated.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $data</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "{\n  \"args\": {},\n  \"data\": {\n    \"k\": \"v\"\n  },\n  \"files\": {},\n  \"form\": {},\n  \"headers\": {\n    \"x-forwarded-proto\": \"https\",\n    \"x-forwarded-port\": \"443\",\n    \"host\": \"postman-echo.com\",\n    \"x-amzn-trace-id\": \"Root=1-64db651a-3e3db576225b398d7211f6f8\",\n    \"content-length\": \"9\",\n    \"content-type\": \"application/json\"\n  },\n  \"json\": {\n    \"k\": \"v\"\n  },\n  \"url\": \"https://postman-echo.com/post\"\n}"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "{\n  \"args\": {},\n  \"data\": {\n    \"key\": \"value\"\n  },\n  \"files\": {},\n  \"form\": {},\n  \"headers\": {\n    \"x-forwarded-proto\": \"https\",\n    \"x-forwarded-port\": \"443\",\n    \"host\": \"postman-echo.com\",\n    \"x-amzn-trace-id\": \"Root=1-64db820d-491f9ecb31c81e1656f4be89\",\n    \"content-length\": \"15\",\n    \"content-type\": \"application/json\"\n  },\n  \"json\": {\n    \"key\": \"value\"\n  },\n  \"url\": \"https://postman-echo.com/post\"\n}"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
