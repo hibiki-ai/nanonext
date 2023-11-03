@@ -21,7 +21,7 @@ A signalling version of the function takes a 'conditionVariable' as an
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nanonext</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.10.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.10.4</span>
       </span>
     </div>
 
@@ -73,8 +73,7 @@ A signalling version of the function takes a 'conditionVariable' as an
 <span>  send_mode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"serial"</span>, <span class="st">"raw"</span>, <span class="st">"next"</span><span class="op">)</span>,</span>
 <span>  recv_mode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"serial"</span>, <span class="st">"character"</span>, <span class="st">"complex"</span>, <span class="st">"double"</span>, <span class="st">"integer"</span>, <span class="st">"logical"</span>,</span>
 <span>    <span class="st">"numeric"</span>, <span class="st">"raw"</span>, <span class="st">"string"</span><span class="op">)</span>,</span>
-<span>  timeout <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  ack <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  timeout <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">request_signal</span><span class="op">(</span></span>
@@ -99,13 +98,11 @@ A signalling version of the function takes a 'conditionVariable' as an
 
 
 <dt>send_mode</dt>
-<dd><p>[default 'serial'] one of 'serial' to send serialised R objects,
-'raw' to send atomic vectors of any type as a raw byte vector, or 'next'
-to send in a new R-compatible serialisation format. Use 'serial' to ensure
-perfect reproducibility within R, although 'raw' must be used when
-interfacing with external applications which do not understand R
-serialisation. Alternatively, for performance, specify an integer position
-in the vector of choices e.g. 1L for 'serial' or 2L for 'raw' etc.</p></dd>
+<dd><p>[default 'serial'] one of 'serial' to send serialised R
+objects, 'raw' to send atomic vectors of any type as a raw byte vector,
+or 'next' (see 'Send Modes' section below). Alternatively, specify an
+integer position in the vector of choices e.g. 1L for 'serial' or 2L for
+'raw' etc.</p></dd>
 
 
 <dt>recv_mode</dt>
@@ -113,21 +110,15 @@ in the vector of choices e.g. 1L for 'serial' or 2L for 'raw' etc.</p></dd>
 'serial', 'character', 'complex', 'double', 'integer', 'logical',
 'numeric', 'raw', or 'string'. The default 'serial' means a serialised R
 object, for the other modes, the raw vector received will be converted
-into the respective mode. Note that 'string' is defined here as a character
-scalar and is a faster alternative to 'character' for receiving a single
-string. Alternatively, for performance, specify an integer position in
-the vector of choices e.g. 1L for 'serial', 2L for 'character' etc.</p></dd>
+into the respective mode. 'string' is a faster alternative to 'character'
+for receiving a length 1 character string. Alternatively, specify an
+integer position in the vector of choices e.g. 1L for 'serial', 2L for
+'character' etc.</p></dd>
 
 
 <dt>timeout</dt>
 <dd><p>[default NULL] integer value in milliseconds or NULL, which
 applies a socket-specific default, usually the same as no timeout.</p></dd>
-
-
-<dt>ack</dt>
-<dd><p>[default FALSE] logical value whether to send an ack(nowledgement)
-back to the rep node (consisting of an empty message) when the async
-receive is complete.</p></dd>
 
 
 <dt>cv</dt>
@@ -161,6 +152,24 @@ signal when the async receive is complete.</p></dd>
     the supplied 'conditionVariable' is signalled by incrementing its value
     by 1. This happens asynchronously and independently of the R execution
     thread.</p>
+    </div>
+    <div id="send-modes">
+    <h2>Send Modes</h2>
+    
+
+
+<p>The default mode 'serial' sends serialised R objects to ensure perfect
+    reproducibility within R. When receiving, the corresponding mode 'serial'
+    should be used.</p>
+<p>Mode 'raw' sends atomic vectors of any type as a raw byte vector, and
+    must be used when interfacing with external applications or raw system
+    sockets, where R serialization is not in use. When receiving, the mode
+    corresponding to the vector sent should be used.</p>
+<p>Mode 'next' sends serialised R objects, with native extensions enabled by
+    <code><a href="nextmode.html">nextmode</a></code>. This allows 'refhook' functions to be registered
+    for custom serialization and unserialization of reference objects, such
+    as those accessed via an external pointer. When receiving, mode 'serial'
+    should be used as 'next' sends are fully compatible.</p>
     </div>
 
     <div id="ref-examples">
