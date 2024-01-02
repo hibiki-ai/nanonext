@@ -25,12 +25,15 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nanonext</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.11.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.11.0.9005</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav"><li>
+  <a href="../articles/nanonext.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -81,7 +84,7 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>n</dt>
-<dd><p>[default 1L] integer random bytes to generate.</p></dd>
+<dd><p>[default 1L] integer random bytes to generate (from 0 to 1024).</p></dd>
 
 
 <dt>convert</dt>
@@ -110,11 +113,11 @@ to return the hex representation of the bytes as a character string.</p></dd>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">random</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "44"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ae"</span>
 <span class="r-in"><span><span class="fu">random</span><span class="op">(</span><span class="fl">8L</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "e777db656afad29a"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "e5f62e3a7129a37b"</span>
 <span class="r-in"><span><span class="fu">random</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">8L</span>, convert <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 82 60 9e c9 79 2b f6 65</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] cc da 2a 70 11 7a 34 8b</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

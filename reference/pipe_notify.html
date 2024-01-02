@@ -18,12 +18,15 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nanonext</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.11.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.11.0.9005</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav"><li>
+  <a href="../articles/nanonext.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -94,7 +97,9 @@ removed.</p></dd>
 <dd><p>[default FALSE] logical value whether to also set a flag in the
 'conditionVariable'. This can help distinguish between different types of
 signal, and causes any subsequent <code><a href="cv.html">wait</a></code> to return FALSE
-instead of TRUE.</p></dd>
+instead of TRUE. If a signal from the <span class="pkg">tools</span> package, e.g.
+<code><a href="https://rdrr.io/r/tools/pskill.html" class="external-link">tools::SIGINT</a></code>, or an equivalent integer value is supplied, this
+sets a flag and additionally raises this signal upon the flag being set.</p></dd>
 
 </dl></div>
     <div id="value">

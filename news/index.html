@@ -17,12 +17,15 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nanonext</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.11.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.11.0.9005</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav"><li>
+  <a href="../articles/nanonext.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -54,7 +57,26 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.11.0" id="nanonext-0110">nanonext 0.11.0<a class="anchor" aria-label="anchor" href="#nanonext-0110"></a></h2>
+<h2 class="page-header" data-toc-text="0.11.0.9005" id="nanonext-01109005-development">nanonext 0.11.0.9005 (development)<a class="anchor" aria-label="anchor" href="#nanonext-01109005-development"></a></h2>
+<div class="section level5">
+<h5 id="new-features-0-11-0-9005">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-11-0-9005"></a></h5>
+<ul><li>
+<code><a href="../reference/pipe_notify.html">pipe_notify()</a></code> argument ‘flag’ allows supplying a signal to be raised on a flag being set upon a pipe event.</li>
+</ul></div>
+<div class="section level5">
+<h5 id="updates-0-11-0-9005">Updates<a class="anchor" aria-label="anchor" href="#updates-0-11-0-9005"></a></h5>
+<ul><li>
+<code><a href="../reference/next_config.html">next_config()</a></code> now returns a pairlist (of the registered serialization functions) rather than a list (for efficiency).</li>
+<li>Using mode ‘next’, serialization functions with incorrect signatures are now simply ignored rather than raise errors.</li>
+<li>
+<code><a href="../reference/random.html">random()</a></code> input ‘n’ updated to only accept integers between 0 and 1024.</li>
+<li>Deprecated function <code>.until()</code> is removed.</li>
+<li>Eliminates potential memory leaks along certain error paths.</li>
+<li>Upgrades bundled ‘libnng’ to v1.7.0 release.</li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.11.0" id="nanonext-0110">nanonext 0.11.0<small>2023-12-04</small><a class="anchor" aria-label="anchor" href="#nanonext-0110"></a></h2>
 <p><em>This is a major stability release bundling the ‘libnng’ v1.6.0 source code.</em></p>
 <div class="section level5">
 <h5 id="new-features-0-11-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-11-0"></a></h5>
@@ -71,7 +93,7 @@
 <li>no longer returns invisibly for easier confimation that the correct functions have been registered.</li>
 </ul></li>
 <li>
-<code><a href="../reference/cv.html">until()</a></code> updated to be identical to <code><a href="../reference/dot-until.html">.until()</a></code>, returning FALSE instead of TRUE if the timeout has been reached.</li>
+<code><a href="../reference/cv.html">until()</a></code> updated to be identical to <code>.until()</code>, returning FALSE instead of TRUE if the timeout has been reached.</li>
 <li>
 <code><a href="../reference/reap.html">reap()</a></code> updated to no longer warn in cases it returns an ‘errorValue’.</li>
 <li>
@@ -79,7 +101,7 @@
 <li>Fixes regression in release 0.10.4 that caused a potential segfault using <code><a href="../reference/ncurl.html">ncurl()</a></code> with ‘follow’ set to TRUE when the server returns a missing or invalid relocation address.</li>
 <li>The weak references interface is removed as ‘non-core’.</li>
 <li>Upgrades bundled ‘libnng’ to v1.6.0 release.</li>
-<li>Upgrades bundled ‘libmbedtls’ to v 3.5.1.</li>
+<li>Upgrades bundled ‘libmbedtls’ to v3.5.1.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -89,7 +111,7 @@
 <ul><li>
 <code>nextmode()</code> configures settings for send mode ‘next’. Registers hook functions for custom serialization and unserialization of reference objects (such as those accessed via an external pointer).</li>
 <li>
-<code><a href="../reference/dot-until.html">.until()</a></code> contains revised behaviour for this synchronisation primitive, returning FALSE instead of TRUE if the timeout has been reached. This function will replace <code><a href="../reference/cv.html">until()</a></code> in a future package version.</li>
+<code>.until()</code> contains revised behaviour for this synchronisation primitive, returning FALSE instead of TRUE if the timeout has been reached. This function will replace <code><a href="../reference/cv.html">until()</a></code> in a future package version.</li>
 </ul></div>
 <div class="section level5">
 <h5 id="updates-0-10-4">Updates<a class="anchor" aria-label="anchor" href="#updates-0-10-4"></a></h5>
@@ -99,7 +121,7 @@
 <li>
 <code><a href="../reference/request.html">request()</a></code> argument ‘ack’ removed due to stability considerations.</li>
 <li>Fixes memory leaks detected with valgrind.</li>
-<li>Upgrades bundled ‘libmbedtls’ to v 3.5.0.</li>
+<li>Upgrades bundled ‘libmbedtls’ to v3.5.0.</li>
 </ul></div>
 </div>
     <div class="section level2">
