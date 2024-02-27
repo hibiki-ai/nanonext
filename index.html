@@ -50,7 +50,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">nanonext</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.13.0.9009</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.13.2.9001</span>
       </span>
     </div>
 
@@ -139,12 +139,12 @@
 <div class="section level3">
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h3>
-<p>Install the latest release from CRAN:</p>
+<p>Releases are made on rOpenSci R-universe, and also CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"nanonext"</span><span class="op">)</span></span></code></pre></div>
-<p>or the development version from rOpenSci R-universe:</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"nanonext"</span>, repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"shikokuchuo.r-universe.dev"</span>, <span class="st">"cloud.r-project.org"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>Install the latest development version from Github:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"nanonext"</span>, repos <span class="op">=</span> <span class="st">"https://shikokuchuo.r-universe.dev"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"shikokuchuo/nanonext"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
@@ -228,14 +228,14 @@
 <li>
 <a href="https://www.r-project.org/contributors.html" class="external-link">R Core</a> for various auxiliary functions for serialisation and raw / character conversion, which have been adopted by the package.</li>
 <li>
-<a href="https://homepage.stat.uiowa.edu/~luke/" class="external-link">Luke Tierney</a> and <a href="https://github.com/coolbutuseless" class="external-link">Mike Cheng</a> for meticulous documentation of the R serialization mechanism, which led to the package’s own implementation of a low-level interface to R serialization.</li>
+<a href="https://github.com/ltierney/" class="external-link">Luke Tierney</a> and <a href="https://github.com/coolbutuseless" class="external-link">Mike Cheng</a> for meticulous documentation of the R serialization mechanism, which led to the package’s own implementation of a low-level interface to R serialization.</li>
 <li>
 <a href="https://github.com/jeroen" class="external-link">Jeroen Ooms</a> - for his ‘Anticonf (tm)’ configure script, on which our original ‘configure’ was based, although much modified since.</li>
 </ul>
 <p>Links:</p>
-<p><code>nanonext</code> website: <a href="https://shikokuchuo.net/nanonext/" class="uri">https://shikokuchuo.net/nanonext/</a><br><code>nanonext</code> on CRAN: <a href="https://cran.r-project.org/package=nanonext" class="external-link uri">https://cran.r-project.org/package=nanonext</a><br></p>
-<p><code>nanonext</code> is listed in CRAN Task Views:<br> - High Performance Computing: <a href="https://cran.r-project.org/view=HighPerformanceComputing" class="external-link uri">https://cran.r-project.org/view=HighPerformanceComputing</a><br> - Web Technologies: <a href="https://cran.r-project.org/view=WebTechnologies" class="external-link uri">https://cran.r-project.org/view=WebTechnologies</a><br></p>
-<p>NNG website: <a href="https://nng.nanomsg.org/" class="external-link uri">https://nng.nanomsg.org/</a><br> Mbed TLS website: <a href="https://www.trustedfirmware.org/projects/mbed-tls/" class="external-link uri">https://www.trustedfirmware.org/projects/mbed-tls/</a><br></p>
+<p>◈ nanonext R package: <a href="https://shikokuchuo.net/nanonext/" class="uri">https://shikokuchuo.net/nanonext/</a></p>
+<p>nanonext is listed in CRAN Task Views:<br> - High Performance Computing: <a href="https://cran.r-project.org/view=HighPerformanceComputing" class="external-link uri">https://cran.r-project.org/view=HighPerformanceComputing</a><br> - Web Technologies: <a href="https://cran.r-project.org/view=WebTechnologies" class="external-link uri">https://cran.r-project.org/view=WebTechnologies</a></p>
+<p>NNG website: <a href="https://nng.nanomsg.org/" class="external-link uri">https://nng.nanomsg.org/</a><br> Mbed TLS website: <a href="https://www.trustedfirmware.org/projects/mbed-tls/" class="external-link uri">https://www.trustedfirmware.org/projects/mbed-tls/</a></p>
 <p>–</p>
 <p>Please note that this project is released with a <a href="https://shikokuchuo.net/nanonext/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
