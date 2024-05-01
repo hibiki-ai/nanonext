@@ -136,6 +136,9 @@
     <loc>https://shikokuchuo.net/nanonext/reference/send_aio.html</loc>
   </url>
   <url>
+    <loc>https://shikokuchuo.net/nanonext/reference/set_promise_context.html</loc>
+  </url>
+  <url>
     <loc>https://shikokuchuo.net/nanonext/reference/socket.html</loc>
   </url>
   <url>
@@ -173,5 +176,8 @@
   </url>
   <url>
     <loc>https://shikokuchuo.net/nanonext/reference/write_cert.html</loc>
+  </url>
+  <url>
+    <loc>https://shikokuchuo.net/nanonext/reference/zzz.html</loc>
   </url>
 </urlset>
