@@ -25,7 +25,7 @@
     <loc>https://shikokuchuo.net/nanonext/news/index.html</loc>
   </url>
   <url>
-    <loc>https://shikokuchuo.net/nanonext/reference/base64enc.html</loc>
+    <loc>https://shikokuchuo.net/nanonext/reference/as.promise.ncurlAio.html</loc>
   </url>
   <url>
     <loc>https://shikokuchuo.net/nanonext/reference/call_aio.html</loc>
@@ -127,16 +127,10 @@
     <loc>https://shikokuchuo.net/nanonext/reference/recv_aio.html</loc>
   </url>
   <url>
-    <loc>https://shikokuchuo.net/nanonext/reference/recv_aio_signal.html</loc>
-  </url>
-  <url>
     <loc>https://shikokuchuo.net/nanonext/reference/reply.html</loc>
   </url>
   <url>
     <loc>https://shikokuchuo.net/nanonext/reference/request.html</loc>
-  </url>
-  <url>
-    <loc>https://shikokuchuo.net/nanonext/reference/request_signal.html</loc>
   </url>
   <url>
     <loc>https://shikokuchuo.net/nanonext/reference/send.html</loc>
@@ -161,9 +155,6 @@
   </url>
   <url>
     <loc>https://shikokuchuo.net/nanonext/reference/stop_aio.html</loc>
-  </url>
-  <url>
-    <loc>https://shikokuchuo.net/nanonext/reference/strcat.html</loc>
   </url>
   <url>
     <loc>https://shikokuchuo.net/nanonext/reference/stream.html</loc>
