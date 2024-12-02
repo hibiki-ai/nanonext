@@ -12,13 +12,13 @@
 <url><loc>https://shikokuchuo.net/nanonext/reference/call_aio.html</loc></url>
 <url><loc>https://shikokuchuo.net/nanonext/reference/close.html</loc></url>
 <url><loc>https://shikokuchuo.net/nanonext/reference/collect_aio.html</loc></url>
-<url><loc>https://shikokuchuo.net/nanonext/reference/collect_pipe.html</loc></url>
 <url><loc>https://shikokuchuo.net/nanonext/reference/context.html</loc></url>
 <url><loc>https://shikokuchuo.net/nanonext/reference/cv.html</loc></url>
 <url><loc>https://shikokuchuo.net/nanonext/reference/dial.html</loc></url>
 <url><loc>https://shikokuchuo.net/nanonext/reference/dot-advance.html</loc></url>
 <url><loc>https://shikokuchuo.net/nanonext/reference/dot-context.html</loc></url>
 <url><loc>https://shikokuchuo.net/nanonext/reference/dot-dispatcher.html</loc></url>
+<url><loc>https://shikokuchuo.net/nanonext/reference/dot-interrupt.html</loc></url>
 <url><loc>https://shikokuchuo.net/nanonext/reference/dot-keep.html</loc></url>
 <url><loc>https://shikokuchuo.net/nanonext/reference/dot-mark.html</loc></url>
 <url><loc>https://shikokuchuo.net/nanonext/reference/dot-online.html</loc></url>
@@ -31,6 +31,7 @@
 <url><loc>https://shikokuchuo.net/nanonext/reference/lock.html</loc></url>
 <url><loc>https://shikokuchuo.net/nanonext/reference/mclock.html</loc></url>
 <url><loc>https://shikokuchuo.net/nanonext/reference/messenger.html</loc></url>
+<url><loc>https://shikokuchuo.net/nanonext/reference/monitor.html</loc></url>
 <url><loc>https://shikokuchuo.net/nanonext/reference/msleep.html</loc></url>
 <url><loc>https://shikokuchuo.net/nanonext/reference/nano.html</loc></url>
 <url><loc>https://shikokuchuo.net/nanonext/reference/nanonext-package.html</loc></url>
