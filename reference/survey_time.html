@@ -13,7 +13,7 @@ ended are discarded."><meta property="og:image" content="https://shikokuchuo.net
 
     <a class="navbar-brand me-2" href="../index.html">nanonext</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,7 +63,7 @@ ended are discarded.</p>
 
 
 <dl><dt id="arg-con">con<a class="anchor" aria-label="anchor" href="#arg-con"></a></dt>
-<dd><p>a Socket or Context using the ‘surveyor’ protocol.</p></dd>
+<dd><p>a Socket or Context using the 'surveyor' protocol.</p></dd>
 
 
 <dt id="arg-value">value<a class="anchor" aria-label="anchor" href="#arg-value"></a></dt>
@@ -79,8 +79,8 @@ ended are discarded.</p>
     <p>After using this function, to start a new survey, the surveyor must:</p><ul><li><p>send a message.</p></li>
 <li><p>switch to receiving responses.</p></li>
 </ul><p>To respond to a survey, the respondent must:</p><ul><li><p>receive the survey message.</p></li>
-<li><p>send a reply using <code><a href="send_aio.html">send_aio</a></code> before the survey has timed
-  out (a reply can only be sent after receiving a survey).</p></li>
+<li><p>send a reply using <code><a href="send_aio.html">send_aio()</a></code> before the survey has timed out (a
+reply can only be sent after receiving a survey).</p></li>
 </ul></div>
 
     <div class="section level2">

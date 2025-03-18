@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">nanonext</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +40,21 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.5.1" id="nanonext-151">nanonext 1.5.1<a class="anchor" aria-label="anchor" href="#nanonext-151"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.5.2" id="nanonext-152">nanonext 1.5.2<a class="anchor" aria-label="anchor" href="#nanonext-152"></a></h2>
+<div class="section level5">
+<h5 id="updates-1-5-2">Updates<a class="anchor" aria-label="anchor" href="#updates-1-5-2"></a></h5>
+<ul><li>
+<code><a href="../reference/write_cert.html">write_cert()</a></code> argument ‘cn’ now defaults to ‘127.0.0.1’ instead of ‘localhost’.</li>
+<li>
+<code><a href="../reference/messenger.html">messenger()</a></code> now exits cleanly, correcting a regression in nanonext 1.5.0 (<a href="https://github.com/shikokuchuo/nanonext/issues/87" class="external-link">#87</a>).</li>
+<li>Promises created from ‘recvAio’ and ‘ncurlAio’ now reject in exactly the same way whether or not they were resolved at time of creation (<a href="https://github.com/shikokuchuo/nanonext/issues/89" class="external-link">#89</a>).</li>
+<li>Bundled ‘libnng’ updated to 1.10.2 pre-release.
+<ul><li>With this library version, a ‘req’ socket with option ‘req:resend-time’ set as 0 now frees the message as soon as the send has completed without waiting for the reply.</li>
+</ul></li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.5.1" id="nanonext-151">nanonext 1.5.1<a class="anchor" aria-label="anchor" href="#nanonext-151"></a></h2><p class="text-muted">CRAN release: 2025-02-16</p>
 <div class="section level5">
 <h5 id="updates-1-5-1">Updates<a class="anchor" aria-label="anchor" href="#updates-1-5-1"></a></h5>
 <ul><li>

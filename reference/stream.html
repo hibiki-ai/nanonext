@@ -11,7 +11,7 @@ low-level interface intended for communicating with non-NNG endpoints."><meta pr
 
     <a class="navbar-brand me-2" href="../index.html">nanonext</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,27 +72,27 @@ all transports are supported).</p></dd>
 
 
 <dt id="arg-textframes">textframes<a class="anchor" aria-label="anchor" href="#arg-textframes"></a></dt>
-<dd><p>[default FALSE] applicable to the websocket transport only,
-enables sending and receiving of TEXT frames (ignored otherwise).</p></dd>
+<dd><p>[default FALSE] applicable to the websocket transport
+only, enables sending and receiving of TEXT frames (ignored otherwise).</p></dd>
 
 
 <dt id="arg-tls">tls<a class="anchor" aria-label="anchor" href="#arg-tls"></a></dt>
 <dd><p>(optional) applicable to secure websockets only, a client or
-server TLS configuration object created by <code><a href="tls_config.html">tls_config</a></code>. If
-missing or NULL, certificates are not validated.</p></dd>
+server TLS configuration object created by <code><a href="tls_config.html">tls_config()</a></code>. If missing or
+NULL, certificates are not validated.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A Stream (object of class ‘nanoStream’ and ‘nano’).</p>
+    <p>A Stream (object of class 'nanoStream' and 'nano').</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>A Stream is used for raw byte stream connections. Byte streams are reliable
 in that data will not be delivered out of order, or with portions missing.</p>
-<p>Can be used to dial a (secure) websocket address starting 'ws://' or 'wss://'.
-It is often the case that 'textframes' needs to be set to TRUE.</p>
-<p>Specify only one of 'dial' or 'listen'. If both are specified, 'listen' will
+<p>Can be used to dial a (secure) websocket address starting 'ws://' or
+'wss://'. It is often the case that <code>textframes</code> needs to be set to <code>TRUE</code>.</p>
+<p>Specify only one of <code>dial</code> or <code>listen</code>. If both are specified, <code>listen</code> will
 be ignored.</p>
 <p>Closing a stream renders it invalid and attempting to perform additional
 operations on it will error.</p>
