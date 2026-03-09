@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">nanonext</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.8.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.8.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,6 +27,7 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-news" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">News</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-news"><li><h6 class="dropdown-header" data-toc-skip>Releases</h6></li>
+    <li><a class="external-link dropdown-item" href="https://tidyverse.org/blog/2026/02/nanonext-1-8-0/">nanonext 1.8.0</a></li>
     <li><a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2025/09/nanonext-1-7-0/">nanonext 1.7.0</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="../news/index.html">Changelog</a></li>
@@ -78,7 +79,9 @@ responses; the return value is ignored.</p></dd>
 
 <dt id="arg-on-open">on_open<a class="anchor" aria-label="anchor" href="#arg-on-open"></a></dt>
 <dd><p>[default NULL] Function called when a connection opens.
-Signature: <code>function(ws)</code></p></dd>
+Signature: <code>function(ws, req)</code> where <code>req</code> is a list with <code>uri</code>
+(character) and <code>headers</code> (named character vector) from the HTTP upgrade
+request.</p></dd>
 
 
 <dt id="arg-on-close">on_close<a class="anchor" aria-label="anchor" href="#arg-on-close"></a></dt>
@@ -122,7 +125,7 @@ handlers, making IDs safe to use as keys in a shared data structure.</p></li>
 <span class="r-in"><span>    <span class="co"># Broadcast to all</span></span></span>
 <span class="r-in"><span>    <span class="kw">for</span> <span class="op">(</span><span class="va">client</span> <span class="kw">in</span> <span class="va">clients</span><span class="op">)</span> <span class="va">client</span><span class="op">$</span><span class="fu">send</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">}</span>,</span></span>
-<span class="r-in"><span>  on_open <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">ws</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  on_open <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">ws</span>, <span class="va">req</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>    <span class="va">clients</span><span class="op">[[</span><span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">ws</span><span class="op">$</span><span class="va">id</span><span class="op">)</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;&lt;-</span> <span class="va">ws</span></span></span>
 <span class="r-in"><span>  <span class="op">}</span>,</span></span>
 <span class="r-in"><span>  on_close <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">ws</span><span class="op">)</span> <span class="op">{</span></span></span>
