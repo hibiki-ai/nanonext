@@ -123,7 +123,7 @@ ncurl(
 #> 
 #> $headers
 #> $headers$date
-#> [1] "Mon, 04 May 2026 16:12:24 GMT"
+#> [1] "Mon, 01 Jun 2026 13:42:58 GMT"
 #> 
 #> $headers$`content-type`
 #> [1] "application/json; charset=utf-8"
@@ -148,7 +148,7 @@ ncurl(
 #> 
 #> $headers
 #> $headers$Date
-#> [1] "Mon, 04 May 2026 16:12:24 GMT"
+#> [1] "Mon, 01 Jun 2026 13:42:58 GMT"
 #> 
 #> $headers$`Content-Type`
 #> [1] "application/json; charset=utf-8"
@@ -172,13 +172,13 @@ ncurl(
 #> [1] "DYNAMIC"
 #> 
 #> $headers$`Set-Cookie`
-#> [1] "sails.sid=s%3AWZnPNo-A1AfVVP0OkxehxTGBAIUj8uhs.s54uELWR6boN9PR%2B7SavgsFCoNEN1iSEXZimWopTgd8; Path=/; HttpOnly, __cf_bm=vuH0huLYabcI3soktgWYxIHjc.tsROAg0c5Yfo0hJCM-1777911144.5759206-1.0.1.1-oqkCVBeKVgUIfedW2u8qLSziiRizeky8dEwfU5x76A3mIo28v2fyn2K_aeYmo3pJNW4IbtNhx16M.d_FqCITe2KjTHL5uJRg5bcki7rzbdXhmNvjKKCFbdrLKd5YDi9L; HttpOnly; Secure; Path=/; Domain=postman-echo.com; Expires=Mon, 04 May 2026 16:42:24 GMT, _cfuvid=maxTOhb5cSvBp6GBq7Tg6qyQlKfP_uQH47r9wqmkN3o-1777911144.5759206-1.0.1.1-Xo1y7DdpiTmLQlymHKAdY_Zvgk2FIhdqFGg5Ok_qNsU; HttpOnly; SameSite=None; Secure; Path=/; Domain=postman-echo.com"
+#> [1] "sails.sid=s%3A9qydk2zMGY3lfCwAvQJBxwOD0pmnej3V.YG4DUpnZ8dGsm1UrvR6McZutKThIRAlpecRaXJSxUJg; Path=/; HttpOnly, __cf_bm=Fe6gPH2iu0XksBsUXxDFba8rX3.eeq8w451zemn9Zv0-1780321378.7772589-1.0.1.1-9AA3tOZvgGVq8evsU7Soqm.muveyxg2CJv4UbHodmKiv1Hw1LiRC64hmNNre2snJ5Xf7rFfbT5Wyz04DxL6_7P8UJOJymxtYSsc6.UfD7YuzdJc02hBnC5vCnKD7EHKc; HttpOnly; Secure; Path=/; Domain=postman-echo.com; Expires=Mon, 01 Jun 2026 14:12:58 GMT, _cfuvid=STpxgLioztdHMSrSTRq4rqfj0CabunF7iZWXhSLnvXU-1780321378.7772589-1.0.1.1-4gxxvMUu9Uh8vGxwL_VECmNYkbMP76KMRWSneeMvc5U; HttpOnly; SameSite=None; Secure; Path=/; Domain=postman-echo.com"
 #> 
 #> $headers$Server
 #> [1] "cloudflare"
 #> 
 #> $headers$`CF-RAY`
-#> [1] "9f68c96d9ac94614-DFW"
+#> [1] "a04ea5095ec6ae99-SJC"
 #> 
 #> 
 #> $data
