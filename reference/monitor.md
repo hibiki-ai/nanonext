@@ -41,7 +41,7 @@ s1 <- socket("poly")
 m <- monitor(s, cv)
 m
 #> < nanoMonitor >
-#>  - socket: 14
+#>  - socket: 16
 
 listen(s)
 dial(s1)
@@ -49,11 +49,11 @@ dial(s1)
 cv_value(cv)
 #> [1] 1
 read_monitor(m)
-#> [1] 615585074
+#> [1] 402326795
 
 close(s)
 close(s1)
 
 read_monitor(m)
-#> [1] -615585074
+#> [1] -402326795
 ```

@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">nanonext</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.9.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.10.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,9 +92,9 @@ address is returned as response header 'Location'.</p></dd>
 
 
 <dt id="arg-headers">headers<a class="anchor" aria-label="anchor" href="#arg-headers"></a></dt>
-<dd><p>(optional) a named character vector specifying the HTTP
-request headers, for example: <br><code>c(Authorization = "Bearer APIKEY", "Content-Type" = "text/plain")</code> <br>
-A non-character or non-named vector will be ignored.</p></dd>
+<dd><p>(optional) a named character vector or named list specifying
+the HTTP request headers, for example: <br><code>c(Authorization = "Bearer APIKEY", "Content-Type" = "text/plain")</code> or <br><code>list(Authorization = "Bearer APIKEY", "Content-Type" = "text/plain")</code> <br>
+An unnamed vector or list will be ignored.</p></dd>
 
 
 <dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
@@ -106,10 +106,10 @@ format.</p></dd>
 
 
 <dt id="arg-response">response<a class="anchor" aria-label="anchor" href="#arg-response"></a></dt>
-<dd><p>(optional) a character vector specifying the response headers
-to return e.g. <code>c("date", "server")</code>. These are case-insensitive and
-will return NULL if not present. Specify <code>TRUE</code> to return all response
-headers. A non-character vector will be ignored (other than <code>TRUE</code>).</p></dd>
+<dd><p>(optional) <code>TRUE</code> to return all response headers, or a
+character vector specifying the response headers to return e.g.
+<code>c("date", "server")</code>. These are case-insensitive and will return NULL if
+not present. A non-character vector will be ignored (other than <code>TRUE</code>).</p></dd>
 
 
 <dt id="arg-timeout">timeout<a class="anchor" aria-label="anchor" href="#arg-timeout"></a></dt>
@@ -163,7 +163,7 @@ persistent connections.</p></div>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers$date</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Mon, 01 Jun 2026 13:42:58 GMT"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Thu, 02 Jul 2026 08:13:39 GMT"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers$`content-type`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "application/json; charset=utf-8"</span>
@@ -188,7 +188,7 @@ persistent connections.</p></div>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers$Date</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Mon, 01 Jun 2026 13:42:58 GMT"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Thu, 02 Jul 2026 08:13:39 GMT"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers$`Content-Type`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "application/json; charset=utf-8"</span>
@@ -212,13 +212,13 @@ persistent connections.</p></div>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DYNAMIC"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers$`Set-Cookie`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "sails.sid=s%3A9qydk2zMGY3lfCwAvQJBxwOD0pmnej3V.YG4DUpnZ8dGsm1UrvR6McZutKThIRAlpecRaXJSxUJg; Path=/; HttpOnly, __cf_bm=Fe6gPH2iu0XksBsUXxDFba8rX3.eeq8w451zemn9Zv0-1780321378.7772589-1.0.1.1-9AA3tOZvgGVq8evsU7Soqm.muveyxg2CJv4UbHodmKiv1Hw1LiRC64hmNNre2snJ5Xf7rFfbT5Wyz04DxL6_7P8UJOJymxtYSsc6.UfD7YuzdJc02hBnC5vCnKD7EHKc; HttpOnly; Secure; Path=/; Domain=postman-echo.com; Expires=Mon, 01 Jun 2026 14:12:58 GMT, _cfuvid=STpxgLioztdHMSrSTRq4rqfj0CabunF7iZWXhSLnvXU-1780321378.7772589-1.0.1.1-4gxxvMUu9Uh8vGxwL_VECmNYkbMP76KMRWSneeMvc5U; HttpOnly; SameSite=None; Secure; Path=/; Domain=postman-echo.com"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "sails.sid=s%3AVuJp6X8t7Pl1qaACgBzrFEwcK0m38Q1p.8EwV5m3h0zNCfh5acv5RkeeQ0EFwDGjPtAMohPTBkXk; Path=/; HttpOnly, __cf_bm=sWkYOCpYgluu6bM5jialMeHuHyoDnGiCld4gdRosid4-1782980019.887718-1.0.1.1-3nVuPlz43B3ntqb.JX65lpwOfqXgke1w2KP0k5htd0IeYXKkefK1Y99RNE5bGy.X_lon_c.BqbbAf.3FogiAl5cIRv8HprkhBFQlqd.yoYl3wtqnREPOmslAlULnJsRj; HttpOnly; Secure; Path=/; Domain=postman-echo.com; Expires=Thu, 02 Jul 2026 08:43:39 GMT, _cfuvid=EjLPBpwUIvtf2cEPjd3iL9Yss00TIvOqvZjDl2PJKP8-1782980019.887718-1.0.1.1-_gfZCo509TVlHi5zLXHmzfFFk8f2MU08GlyAXXzv6zQ; HttpOnly; SameSite=None; Secure; Path=/; Domain=postman-echo.com"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers$Server</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "cloudflare"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers$`CF-RAY`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a04ea5095ec6ae99-SJC"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a14c31444d55e713-IAD"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $data</span>
