@@ -117,41 +117,15 @@ for persistent connections.
 ``` r
 ncurl(
   "https://postman-echo.com/get",
-  convert = FALSE,
-  response = c("date", "content-type"),
-  timeout = 1200L
-)
-#> $status
-#> [1] 200
-#> 
-#> $headers
-#> $headers$date
-#> [1] "Thu, 09 Jul 2026 22:00:27 GMT"
-#> 
-#> $headers$`content-type`
-#> [1] "application/json; charset=utf-8"
-#> 
-#> 
-#> $data
-#>   [1] 7b 22 61 72 67 73 22 3a 7b 7d 2c 22 68 65 61 64 65 72 73 22 3a 7b
-#>  [23] 22 68 6f 73 74 22 3a 22 70 6f 73 74 6d 61 6e 2d 65 63 68 6f 2e 63
-#>  [45] 6f 6d 22 2c 22 61 63 63 65 70 74 2d 65 6e 63 6f 64 69 6e 67 22 3a
-#>  [67] 22 67 7a 69 70 2c 20 62 72 22 2c 22 78 2d 66 6f 72 77 61 72 64 65
-#>  [89] 64 2d 70 72 6f 74 6f 22 3a 22 68 74 74 70 73 22 7d 2c 22 75 72 6c
-#> [111] 22 3a 22 68 74 74 70 73 3a 2f 2f 70 6f 73 74 6d 61 6e 2d 65 63 68
-#> [133] 6f 2e 63 6f 6d 2f 67 65 74 22 7d
-#> 
-ncurl(
-  "https://postman-echo.com/get",
   response = TRUE,
-  timeout = 1200L
+  timeout = 2000L
 )
 #> $status
 #> [1] 200
 #> 
 #> $headers
 #> $headers$Date
-#> [1] "Thu, 09 Jul 2026 22:00:27 GMT"
+#> [1] "Tue, 04 Aug 2026 15:51:31 GMT"
 #> 
 #> $headers$`Content-Type`
 #> [1] "application/json; charset=utf-8"
@@ -175,13 +149,13 @@ ncurl(
 #> [1] "DYNAMIC"
 #> 
 #> $headers$`Set-Cookie`
-#> [1] "sails.sid=s%3AnId2FSjD66_-TS4WTX6IYLbatjDz7sLO.ge7mCtmq2BSXO0qUHn21RCShj2Tzlg7GDmc8fsjCZlA; Path=/; HttpOnly, __cf_bm=A1hgbE.cxuaE3z_ji5C4FTcFZjSBE4kzf4t8SAhDtig-1783634427.4995337-1.0.1.1-oF4Pk7ukQ.8vTMiiDjEACEnQAeu5m0phSw3fLGo5ZGgU4ESXDtcRuuvzz1.xliDDsqcx.zeVJ9ukuT77DmCZaV8.aWoi1170t6QD10ml6UlL_4IDTjO0qiz_JFvYNdwp; HttpOnly; Secure; Path=/; Domain=postman-echo.com; Expires=Thu, 09 Jul 2026 22:30:27 GMT, _cfuvid=uoF89I.u8vDaYYD9_IgA1StW0luC2JOSfNDLwLzYf8c-1783634427.4995337-1.0.1.1-7QWbHRkCSXa.xngFkvJUb2FWRDc8XGj8vRggHpsJZCw; HttpOnly; SameSite=None; Secure; Path=/; Domain=postman-echo.com"
+#> [1] "sails.sid=s%3AwDK9c8B6kcTnkFVYUOJAjraj90gQwl8a.KW8XCDJ4Aql7PCpA4BQPw0kcejN%2BYzDuKfLgEuXdphc; Path=/; HttpOnly, __cf_bm=18k5HahjX1jMqicWfuiIAPMNz4Jhs7aD2lvoFo5QuF0-1785858691.8843606-1.0.1.1-FjyELTr7emEbWAcbPK0QsqN70OLWUbXRIlYDCkI_hPh9DJr28r7RGfJ05bg_hGD.1iBTiQ0INBz_TBUHXmrlQZ7u39_FWDT3OV3EkqcTn_9xZ9zBKRD3s0NUYnJ7Xoaz; HttpOnly; Secure; Path=/; Domain=postman-echo.com; Expires=Tue, 04 Aug 2026 16:21:31 GMT, _cfuvid=yrXKYNLpxRRXovZVQTU4awywTR8pFRQ3hhlI3kcOb84-1785858691.8843606-1.0.1.1-EC2PIcX3uMJ.gcf.oGPuu2FeRuEz17JL7hL8g5BwMQo; HttpOnly; SameSite=None; Secure; Path=/; Domain=postman-echo.com"
 #> 
 #> $headers$Server
 #> [1] "cloudflare"
 #> 
 #> $headers$`CF-RAY`
-#> [1] "a18a9a03d8a2d3d7-SJC"
+#> [1] "a25eb9584fb0abb9-IAD"
 #> 
 #> 
 #> $data
@@ -192,7 +166,7 @@ ncurl(
   method = "PUT",
   headers = c(Authorization = "Bearer APIKEY"),
   data = "hello world",
-  timeout = 1500L
+  timeout = 2000L
 )
 #> $status
 #> [1] 200
@@ -205,18 +179,37 @@ ncurl(
 #> 
 ncurl(
   "https://postman-echo.com/post",
+  convert = FALSE,
   method = "POST",
   headers = c(`Content-Type` = "application/json"),
   data = '{"key":"value"}',
-  timeout = 1500L
+  response = c("date", "content-type"),
+  timeout = 2000L
 )
 #> $status
 #> [1] 200
 #> 
 #> $headers
-#> NULL
+#> $headers$date
+#> [1] "Tue, 04 Aug 2026 15:51:32 GMT"
+#> 
+#> $headers$`content-type`
+#> [1] "application/json; charset=utf-8"
+#> 
 #> 
 #> $data
-#> [1] "{\"args\":{},\"data\":{\"key\":\"value\"},\"files\":{},\"form\":{},\"headers\":{\"host\":\"postman-echo.com\",\"content-length\":\"15\",\"content-type\":\"application/json\",\"accept-encoding\":\"gzip, br\",\"x-forwarded-proto\":\"https\"},\"json\":{\"key\":\"value\"},\"url\":\"https://postman-echo.com/post\"}"
+#>   [1] 7b 22 61 72 67 73 22 3a 7b 7d 2c 22 64 61 74 61 22 3a 7b 22 6b 65
+#>  [23] 79 22 3a 22 76 61 6c 75 65 22 7d 2c 22 66 69 6c 65 73 22 3a 7b 7d
+#>  [45] 2c 22 66 6f 72 6d 22 3a 7b 7d 2c 22 68 65 61 64 65 72 73 22 3a 7b
+#>  [67] 22 68 6f 73 74 22 3a 22 70 6f 73 74 6d 61 6e 2d 65 63 68 6f 2e 63
+#>  [89] 6f 6d 22 2c 22 63 6f 6e 74 65 6e 74 2d 6c 65 6e 67 74 68 22 3a 22
+#> [111] 31 35 22 2c 22 63 6f 6e 74 65 6e 74 2d 74 79 70 65 22 3a 22 61 70
+#> [133] 70 6c 69 63 61 74 69 6f 6e 2f 6a 73 6f 6e 22 2c 22 61 63 63 65 70
+#> [155] 74 2d 65 6e 63 6f 64 69 6e 67 22 3a 22 67 7a 69 70 2c 20 62 72 22
+#> [177] 2c 22 78 2d 66 6f 72 77 61 72 64 65 64 2d 70 72 6f 74 6f 22 3a 22
+#> [199] 68 74 74 70 73 22 7d 2c 22 6a 73 6f 6e 22 3a 7b 22 6b 65 79 22 3a
+#> [221] 22 76 61 6c 75 65 22 7d 2c 22 75 72 6c 22 3a 22 68 74 74 70 73 3a
+#> [243] 2f 2f 70 6f 73 74 6d 61 6e 2d 65 63 68 6f 2e 63 6f 6d 2f 70 6f 73
+#> [265] 74 22 7d
 #> 
 ```
