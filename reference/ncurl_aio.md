@@ -131,7 +131,7 @@ nc$status
 #> [1] 200
 nc$headers
 #> $date
-#> [1] "Tue, 04 Aug 2026 15:51:32 GMT"
+#> [1] "Wed, 23 Sep 2026 13:00:50 GMT"
 #> 
 #> $server
 #> [1] "cloudflare"
